@@ -180,7 +180,7 @@ namespace GDK.UIManager.Scripts
 
         private static void AssertScreenType(Type screenType)
         {
-            Assert.IsFalse(typeof(BaseScreen).IsAssignableFrom(screenType), "screenType must be implements IScreen");
+            Assert.IsTrue(typeof(BaseScreen).IsAssignableFrom(screenType), "screenType must be implements IScreen");
         }
 
         #endregion

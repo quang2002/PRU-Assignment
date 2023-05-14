@@ -14,7 +14,11 @@
 
         public override void InstallBindings()
         {
-            this.Container.Bind<ILogger>().FromInstance(new Logger(this.LogHandler)).AsCached();
+            this.Container
+                .Bind<ILogger>()
+                .FromInstance(new Logger(this.LogHandler))
+                .AsCached()
+                .NonLazy();
         }
 
         public static void Install(DiContainer container)

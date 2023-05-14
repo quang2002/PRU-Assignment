@@ -59,6 +59,16 @@
             this.Logger.Log($"Screen {this.ID} hidden");
         }
 
+        public void Open()
+        {
+            this.UIManager.OpenScreen(this.GetType());
+        }
+
+        public void Close()
+        {
+            this.UIManager.CloseScreen(this.GetType());
+        }
+
         #region Inject
 
         protected DiContainer Container { get; }

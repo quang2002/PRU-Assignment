@@ -23,4 +23,16 @@
             base.Hide();
         }
     }
+
+    public abstract class BasePopup<TView, TModel> : BasePopup
+        where TView : BaseView
+        where TModel : class
+    {
+        protected BasePopup(DiContainer container, UIManager uiManager, ILogger logger) : base(container, uiManager, logger)
+        {
+        }
+
+        public new TView  View => base.View as TView;
+        public new TModel Data => base.Data as TModel;
+    }
 }

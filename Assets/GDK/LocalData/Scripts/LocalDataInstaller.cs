@@ -9,7 +9,8 @@
             this.Container
                 .Bind<ILocalData>()
                 .To(binder => binder.AllNonAbstractClasses())
-                .AsCached();
+                .AsCached()
+                .NonLazy();
 
             this.Container
                 .ResolveAll<ILocalData>()
@@ -18,9 +19,13 @@
                                  .Bind(data.GetType())
                                  .FromInstance(data)
                                  .AsCached()
+                                 .NonLazy()
                 );
-            
-            this.Container.Bind<LocalDataManager>().AsCached();
+
+            this.Container
+                .Bind<LocalDataManager>()
+                .AsCached()
+                .NonLazy();
         }
     }
 }

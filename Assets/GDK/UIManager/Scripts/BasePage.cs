@@ -24,4 +24,16 @@
             base.Hide();
         }
     }
+
+    public abstract class BasePage<TView, TModel> : BasePage
+        where TView : BaseView
+        where TModel : class
+    {
+        protected BasePage(DiContainer container, UIManager uiManager, ILogger logger) : base(container, uiManager, logger)
+        {
+        }
+
+        public new TView  View => base.View as TView;
+        public new TModel Data => base.Data as TModel;
+    }
 }
