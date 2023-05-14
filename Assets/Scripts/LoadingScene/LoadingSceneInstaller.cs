@@ -10,7 +10,7 @@
         {
             base.InstallBindings();
 
-            this.Container.Resolve<UIManager>().OpenScreen<LoadingPage>();
+            this.Container.Resolve<UIManager>().OpenScreen<LoadingScreen>();
         }
     }
 }

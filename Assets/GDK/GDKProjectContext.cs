@@ -14,7 +14,7 @@
             this.Container.InstallDebugLogger();
 
             LocalDataInstaller.Install(this.Container);
-            
+
             UnityServiceInstaller.Install(this.Container);
         }
     }

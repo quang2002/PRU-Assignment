@@ -1,6 +1,5 @@
 ﻿namespace GDK
 {
-    using GDK.Services.Unity;
     using GDK.UIManager.Scripts;
     using UnityEngine;
     using Zenject;

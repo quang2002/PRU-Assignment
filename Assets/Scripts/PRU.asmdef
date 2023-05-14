@@ -3,7 +3,8 @@
   "rootNamespace": "",
   "references": [
     "Zenject",
-    "GDK"
+    "GDK",
+    "Unity.TextMeshPro"
   ],
   "includePlatforms": [],
   "excludePlatforms": [],

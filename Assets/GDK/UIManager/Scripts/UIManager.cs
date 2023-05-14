@@ -2,7 +2,9 @@ namespace GDK.UIManager.Scripts
 {
     using System;
     using System.Collections.Generic;
+    using System.Reflection;
     using UnityEngine;
+    using UnityEngine.AddressableAssets;
     using UnityEngine.Assertions;
     using UnityEngine.EventSystems;
     using Zenject;
@@ -95,7 +97,7 @@ namespace GDK.UIManager.Scripts
                 case BasePage page:
                     if (!this.PageStack.TryPeek(out var topPage) || topPage != page)
                     {
-                        topPage?.Hide();
+                        if (topPage) topPage.Hide();
                         page.Show();
                         this.PageStack.Push(page);
                     }
@@ -171,7 +173,13 @@ namespace GDK.UIManager.Scripts
         {
             AssertScreenType(screenType);
 
-            var screen = (BaseScreen)this.Container.Instantiate(screenType);
+            var addressableKey =
+                (screenType.GetCustomAttribute(typeof(ScreenInfoAttribute)) as ScreenInfoAttribute)?.ID ??
+                screenType.Name;
+
+            var prefab = Addressables.LoadAssetAsync<GameObject>(addressableKey).WaitForCompletion();
+
+            var screen = this.Container.InstantiatePrefab(prefab, this.Temp).GetComponent<BaseScreen>();
 
             screen.Init();
 

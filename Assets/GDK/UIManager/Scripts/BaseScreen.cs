@@ -1,62 +1,64 @@
 ﻿namespace GDK.UIManager.Scripts
 {
+    using System.Reflection;
     using UnityEngine;
-    using UnityEngine.AddressableAssets;
     using Zenject;
 
-    public abstract class BaseScreen
+    public abstract class BaseScreen : MonoBehaviour
     {
-        public abstract string ID { get; }
+        private string id;
 
-        public BaseView View { get; internal set; }
+        public string ID => this.id ??=
+            (this.GetType().GetCustomAttribute(typeof(ScreenInfoAttribute)) as ScreenInfoAttribute)?.ID ??
+            this.GetType().Name;
 
         public object Data { get; internal set; }
 
-        public bool IsVisible => this.View.transform.parent != this.UIManager.Temp;
+        public bool IsVisible => this.transform.parent != this.UIManager.Temp;
 
         internal virtual void Init()
         {
-            var prefab = Addressables.LoadAssetAsync<GameObject>(this.ID).WaitForCompletion();
-
-            this.View = this.Container.InstantiatePrefab(prefab, this.UIManager.Temp).GetComponent<BaseView>();
-
+            this.gameObject.SetActive(false);
+            this.gameObject.name = this.ID;
             this.OnInit();
         }
 
         internal virtual void Dispose()
         {
-            Object.DestroyImmediate(this.View.gameObject);
+            DestroyImmediate(this.gameObject);
             this.OnDispose();
         }
 
         internal virtual void Show()
         {
+            this.gameObject.SetActive(true);
             this.OnShow();
         }
 
         internal virtual void Hide()
         {
+            this.gameObject.SetActive(false);
             this.OnHide();
         }
 
         protected virtual void OnInit()
         {
-            this.Logger.Log($"Screen {this.ID} initialized");
+            this.Logger.Log($"Screen <color=green>{this.ID}</color> initialized");
         }
 
         protected virtual void OnDispose()
         {
-            this.Logger.Log($"Screen {this.ID} disposed");
+            this.Logger.Log($"Screen <color=green>{this.ID}</color> disposed");
         }
 
         protected virtual void OnShow()
         {
-            this.Logger.Log($"Screen {this.ID} shown");
+            this.Logger.Log($"Screen <color=green>{this.ID}</color> shown");
         }
 
         protected virtual void OnHide()
         {
-            this.Logger.Log($"Screen {this.ID} hidden");
+            this.Logger.Log($"Screen <color=green>{this.ID}</color> hidden");
         }
 
         public void Open()
@@ -71,11 +73,12 @@
 
         #region Inject
 
-        protected DiContainer Container { get; }
-        protected UIManager   UIManager { get; }
-        protected ILogger     Logger    { get; }
+        protected DiContainer Container { get; private set; }
+        protected UIManager   UIManager { get; private set; }
+        protected ILogger     Logger    { get; private set; }
 
-        protected BaseScreen(DiContainer container, UIManager uiManager, ILogger logger)
+        [Inject]
+        protected virtual void Inject(DiContainer container, UIManager uiManager, ILogger logger)
         {
             this.Container = container;
             this.UIManager = uiManager;

@@ -3,29 +3,24 @@
     using GDK.UIManager.Scripts;
     using UnityEngine;
     using UnityEngine.UI;
-    using Zenject;
 
-    public class SettingScreenView : BaseView
+    public class SettingScreen : BasePopup
     {
+        #region View
+
         [field: SerializeField]
         public Button BtnClose { get; private set; }
-    }
 
-    public class SettingPopup : BasePopup<SettingScreenView, object>
-    {
-        public override string ID => nameof(SettingScreenView);
+        #endregion
 
         protected override bool IsOverlay => false;
 
-        public SettingPopup(DiContainer container, UIManager uiManager, ILogger logger) : base(container, uiManager, logger)
-        {
-        }
 
         protected override void OnInit()
         {
             base.OnInit();
 
-            this.View.BtnClose.onClick.AddListener(this.OnClickBtnClose);
+            this.BtnClose.onClick.AddListener(this.OnClickBtnClose);
         }
 
         private void OnClickBtnClose()

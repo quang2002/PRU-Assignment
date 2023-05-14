@@ -18,11 +18,15 @@ MonoBehaviour:
   m_GUID: ff8547233b71bfe4494643e872b89ab1
   m_SerializeEntries:
   - m_GUID: 19946f462211e6e4aa8412c78735ab99
-    m_Address: LoadingScreenView
+    m_Address: MainMenuScreen
     m_ReadOnly: 0
     m_SerializedLabels: []
   - m_GUID: 5c099a970dfbb5b41af11eae0240f4f1
-    m_Address: SettingScreenView
+    m_Address: SettingScreen
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 22385d890c1127f4abf39b763b7b9bba
+    m_Address: LoadingScreen
     m_ReadOnly: 0
     m_SerializedLabels: []
   m_ReadOnly: 0
