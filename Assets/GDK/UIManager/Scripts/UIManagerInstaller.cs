@@ -13,7 +13,7 @@
 
         public override void InstallBindings()
         {
-            this.Container.Bind<UIManager>().FromInstance(this.UIManager);
+            this.Container.Bind<UIManager>().FromInstance(this.UIManager).AsCached();
         }
     }
 }

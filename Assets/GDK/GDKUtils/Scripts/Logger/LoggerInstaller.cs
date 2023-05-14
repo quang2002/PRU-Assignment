@@ -14,7 +14,7 @@
 
         public override void InstallBindings()
         {
-            this.Container.Bind<ILogger>().FromInstance(new Logger(this.LogHandler)).AsSingle();
+            this.Container.Bind<ILogger>().FromInstance(new Logger(this.LogHandler)).AsCached();
         }
 
         public static void Install(DiContainer container)
