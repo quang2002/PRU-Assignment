@@ -3,6 +3,7 @@
     using GDK.GDKUtils.Scripts;
     using GDK.UIManager.Scripts;
     using UnityEngine;
+    using UnityEngine.SceneManagement;
     using UnityEngine.UI;
 
     public class MainMenuScreen : BasePage
@@ -32,6 +33,7 @@
 
         private void OnClickBtnNewGame()
         {
+            SceneManager.LoadScene(nameof(GameplayScene));
         }
 
         private void OnClickBtnSetting()
