@@ -1,0 +1,11 @@
+﻿{
+  "name": "PRU.MapGenerator.Editor",
+  "includePlatforms": [
+    "Editor"
+  ],
+  "references": [
+    "PRU",
+    "GDK",
+    "GDK.GDKUtils.Editor"
+  ]
+}
