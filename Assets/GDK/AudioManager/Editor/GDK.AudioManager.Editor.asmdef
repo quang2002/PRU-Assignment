@@ -1,0 +1,10 @@
+{
+  "name": "GDK.AudioManager.Editor",
+  "includePlatforms": [
+    "Editor"
+  ],
+  "references": [
+    "GDK.GDKUtils.Editor",
+    "GDK"
+  ]
+}
