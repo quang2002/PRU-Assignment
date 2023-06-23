@@ -3,6 +3,7 @@ namespace GDK.UIManager.Scripts
     using System;
     using System.Collections.Generic;
     using System.Reflection;
+    using GDK.AssetsManager.Scripts;
     using UnityEngine;
     using UnityEngine.AddressableAssets;
     using UnityEngine.Assertions;
@@ -46,6 +47,9 @@ namespace GDK.UIManager.Scripts
 
         [Inject]
         private DiContainer Container { get; }
+
+        [Inject]
+        private IAssetsManager AssetsManager { get; }
 
         private Dictionary<Type, BaseScreen> Screens   { get; } = new();
         private Stack<BasePage>              PageStack { get; } = new();
@@ -177,7 +181,7 @@ namespace GDK.UIManager.Scripts
                 (screenType.GetCustomAttribute(typeof(ScreenInfoAttribute)) as ScreenInfoAttribute)?.ID ??
                 screenType.Name;
 
-            var prefab = Addressables.LoadAssetAsync<GameObject>(addressableKey).WaitForCompletion();
+            var prefab = this.AssetsManager.Load<GameObject>(addressableKey);
 
             var screen = this.Container.InstantiatePrefab(prefab, this.Temp).GetComponent<BaseScreen>();
 

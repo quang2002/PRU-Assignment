@@ -1,5 +1,6 @@
 namespace GDK.AudioManager.Scripts
 {
+    using GDK.AssetsManager.Scripts;
     using UnityEngine;
     using UnityEngine.AddressableAssets;
     using Zenject;
@@ -13,6 +14,9 @@ namespace GDK.AudioManager.Scripts
 
         [field: SerializeField]
         public bool Preload { get; internal set; }
+
+        [Inject]
+        private IAssetsManager AssetsManager { get; }
 
         public AudioSource AudioSource { get; internal set; }
 
@@ -62,7 +66,7 @@ namespace GDK.AudioManager.Scripts
         {
             if (!this.AudioSource) return this;
 
-            this.AudioSource.clip ??= Addressables.LoadAssetAsync<AudioClip>(this.Addressable).WaitForCompletion();
+            this.AudioSource.clip ??= this.AssetsManager.Load<AudioClip>(this.Addressable);
 
             return this;
         }
