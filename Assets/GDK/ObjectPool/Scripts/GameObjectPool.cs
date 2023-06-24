@@ -3,7 +3,7 @@ namespace GDK.ObjectPool.Scripts
     using UnityEngine;
 
     public abstract class GameObjectPool<TObject> : UnityObjectPool<TObject>
-        where TObject : Component
+        where TObject : Component, IPooledObject<TObject>
     {
         protected override void OnInstantiate(TObject obj)
         {
