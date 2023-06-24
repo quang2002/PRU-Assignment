@@ -1,9 +1,11 @@
 ﻿namespace LoadingScene.Screens
 {
     using System;
+    using GameplayScene.Screens;
     using GDK.UIManager.Scripts;
     using TMPro;
     using UnityEngine;
+    using UnityEngine.SceneManagement;
     using UnityEngine.UI;
 
     public class LoadingScreen : BasePage
@@ -51,7 +53,7 @@
 
             if (Math.Abs(this.CurProgressValue - 1) < 0.01f)
             {
-                this.UIManager.OpenScreen<GameplayScreen>();
+                SceneManager.LoadScene("GameplayScene");
             }
         }
     }
