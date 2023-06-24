@@ -5,7 +5,7 @@ namespace GDK.ObjectPool.Scripts
     using UnityEngine;
 
     public abstract class UnityObjectPool<TObject> : MonoBehaviour, IObjectPool<TObject>
-        where TObject : Object
+        where TObject : Object, IPooledObject<TObject>
     {
         protected HashSet<TObject> UsedObjects { get; } = new();
         protected HashSet<TObject> FreeObjects { get; } = new();
@@ -16,7 +16,8 @@ namespace GDK.ObjectPool.Scripts
 
             if (obj == null)
             {
-                obj = this.CreateObject();
+                obj            = this.CreateObject();
+                obj.ObjectPool = this;
             }
             else
             {
