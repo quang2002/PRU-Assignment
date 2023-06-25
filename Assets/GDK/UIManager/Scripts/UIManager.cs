@@ -5,7 +5,6 @@ namespace GDK.UIManager.Scripts
     using System.Reflection;
     using GDK.AssetsManager.Scripts;
     using UnityEngine;
-    using UnityEngine.AddressableAssets;
     using UnityEngine.Assertions;
     using UnityEngine.EventSystems;
     using Zenject;
