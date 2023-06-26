@@ -77,7 +77,6 @@
             this.Logger = logger;
             foreach (var localData in localDataList)
             {
-                localData.PropertyChanged += (sender, _) => this.SaveLocalData(sender.GetType());
                 this.LocalDataCache.Add(localData.GetType(), localData);
             }
 

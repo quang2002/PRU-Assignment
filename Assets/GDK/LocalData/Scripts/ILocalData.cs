@@ -1,9 +1,9 @@
 ﻿namespace GDK.LocalData.Scripts
 {
-    using System.ComponentModel;
 
-    public interface ILocalData : INotifyPropertyChanged
+    public interface ILocalData
     {
-        internal void Initialize();
+        void Initialize();
     }
+
 }
