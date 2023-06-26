@@ -1,6 +1,8 @@
 ﻿namespace GameplayScene.Screens
 {
+
     using System;
+    using System.Numerics;
     using GDK.UIManager.Scripts;
     using TMPro;
     using UnityEngine;
@@ -110,14 +112,14 @@
             [field: SerializeField]
             public TMP_Text TextCurrentValue { get; private set; }
 
-            public void SetCoinNeeded(AbcInt value)
+            public void SetCoinNeeded(BigInteger value)
             {
-                this.TextCoinNeeded.text = value.ToString();
+                this.TextCoinNeeded.text = value.ToShortString();
             }
 
-            public void SetCurrentValue(AbcInt value)
+            public void SetCurrentValue(BigInteger value)
             {
-                this.TextCurrentValue.text = value.ToString();
+                this.TextCurrentValue.text = value.ToShortString();
             }
 
             public void SetUpgradeButtonState(bool interactable)
@@ -132,4 +134,5 @@
             }
         }
     }
+
 }
