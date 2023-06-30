@@ -557,7 +557,7 @@ TextureImporter:
         width: 81
         height: 84
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 28, y: 28, z: 28, w: 28}
       outline: []
       physicsShape: []
@@ -565,6 +565,90 @@ TextureImporter:
       bones: []
       spriteID: 86b3e66dbfa15a6c2b852c78429570f5
       internalID: 541119813
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 1_4
+      rect:
+        serializedVersion: 2
+        x: 231
+        y: 1895
+        width: 106
+        height: 88
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 20, y: 39, z: 20, w: 23}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9b79e8f5362d2d52da0f16b691d9fc38
+      internalID: -140361058
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 1_5
+      rect:
+        serializedVersion: 2
+        x: 1127
+        y: 115
+        width: 108
+        height: 110
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 40, y: 40, z: 40, w: 40}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: daa23593eb8cee9ffa128d7b87a41ac1
+      internalID: 963235884
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 1_6
+      rect:
+        serializedVersion: 2
+        x: 1413
+        y: 633
+        width: 99
+        height: 83
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 44, y: 40, z: 44, w: 40}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f801c9ef771b9f6358eeceb41b527eca
+      internalID: 642328348
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 1_7
+      rect:
+        serializedVersion: 2
+        x: 1503
+        y: 722
+        width: 87
+        height: 83
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 38, y: 38, z: 38, w: 38}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ac041e2b8ed2869468a7cd561211380f
+      internalID: -277666315
       vertices: []
       indices: 
       edges: []
@@ -584,6 +668,10 @@ TextureImporter:
       1_1: -2030991098
       1_2: -1245043143
       1_3: 61248318
+      1_4: -140361058
+      1_5: 963235884
+      1_6: 642328348
+      1_7: -277666315
       1_artifact_icon: -66966941
       1_attack_icon: -1389879349
       1_attack_speed_icon: 712441640
