@@ -31,7 +31,7 @@
                     fieldInfo.SetValue(localData, fieldInfo.GetValue(localDataValue));
                 }
 
-                this.Logger.Log($"<color=green>Load local data: {localDataType.Name}</color>");
+                this.Logger.Log($"Load local data: <color=green>{localDataType.Name}</color>");
             }
         }
 
@@ -43,6 +43,7 @@
                 var localDataJson = JsonConvert.SerializeObject(localData);
 
                 PlayerPrefs.SetString(localDataKey, localDataJson);
+                this.Logger.Log($"Add local data: <color=green>{localDataType.Name}</color> to transaction");
             }
 
             PlayerPrefs.Save();
@@ -58,7 +59,7 @@
             PlayerPrefs.SetString(localDataKey, localDataJson);
             PlayerPrefs.Save();
 
-            this.Logger.Log($"<color=green>Save local data: {localDataType.Name}</color>");
+            this.Logger.Log($"Save local data: <color=green>{localDataType.Name}</color>");
         }
 
         public static string GetLocalDataKeyByType(Type localDataType)
