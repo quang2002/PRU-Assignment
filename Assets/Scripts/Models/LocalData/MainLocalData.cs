@@ -1,6 +1,5 @@
 namespace Models.LocalData
 {
-
     using System.Numerics;
     using GDK.LocalData.Scripts;
 
@@ -14,8 +13,7 @@ namespace Models.LocalData
         {
             this.Username    = "Merlin the Wizard";
             this.Coins       = 0;
-            this.UpgradeData = new UpgradeData();
+            this.UpgradeData = default;
         }
     }
-
 }

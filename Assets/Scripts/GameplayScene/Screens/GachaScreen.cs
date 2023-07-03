@@ -15,6 +15,9 @@ namespace GameplayScene.Screens
         public Button ButtonX10 { get; private set; }
 
         [field: SerializeField]
+        public Button ButtonClose { get; private set; }
+
+        [field: SerializeField]
         public Transform ItemListTransform { get; private set; }
 
         #endregion
@@ -26,6 +29,7 @@ namespace GameplayScene.Screens
             base.OnInit();
             this.ButtonX1.onClick.AddListener(this.OnClickGachaX1);
             this.ButtonX10.onClick.AddListener(this.OnClickGachaX10);
+            this.ButtonClose.onClick.AddListener(this.Close);
         }
 
         protected override void OnShow()
@@ -45,12 +49,10 @@ namespace GameplayScene.Screens
 
         private void OnClickGachaX10()
         {
-                                                                                                                                                                   
         }
 
         private void OnClickGachaX1()
         {
-            
         }
     }
 }
