@@ -1,34 +1,41 @@
 namespace GameplayScene.Screens.Components
 {
-
     using System.Numerics;
     using GDK.GDKUtils.Scripts;
+    using Models.DataControllers;
     using Models.LocalData;
     using TMPro;
     using UnityEngine;
     using Utilities;
+    using Zenject;
 
     public class CoinValueTracking : MonoBehaviour
     {
         [field: SerializeField]
         public TMP_Text TextValue { get; private set; }
 
-        public MainLocalData MainLocalData { get; private set; }
-        public BigInteger    OldCoinValue  { get; private set; } = -1;
+        public BigInteger OldCoinValue { get; private set; } = -1;
 
-        private void Awake()
-        {
-            this.MainLocalData = this.GetContainer().Resolve<MainLocalData>();
-        }
 
         private void Update()
         {
-            if (this.OldCoinValue != this.MainLocalData.Coins)
+            if (this.OldCoinValue != this.MainLocalDataController.Coins)
             {
-                this.OldCoinValue   = this.MainLocalData.Coins;
-                this.TextValue.text = this.MainLocalData.Coins.ToShortString();
+                this.OldCoinValue   = this.MainLocalDataController.Coins;
+                this.TextValue.text = this.MainLocalDataController.Coins.ToShortString();
             }
         }
-    }
 
+        #region Inject
+
+        public MainLocalDataController MainLocalDataController { get; private set; }
+
+        [Inject]
+        private void Inject(MainLocalDataController mainLocalDataController)
+        {
+            this.MainLocalDataController = mainLocalDataController;
+        }
+
+        #endregion
+    }
 }

@@ -1,13 +1,14 @@
 ﻿namespace GameplayScene.Screens
 {
-
     using System;
     using System.Numerics;
     using GDK.UIManager.Scripts;
+    using Models.DataControllers;
     using TMPro;
     using UnityEngine;
     using UnityEngine.UI;
     using Utilities;
+    using Zenject;
 
     public class GameplayScreen : BasePage
     {
@@ -45,6 +46,13 @@
 
         #endregion
 
+        #region Inject
+
+        [Inject]
+        private MainLocalDataController MainLocalDataController { get; set; }
+
+        #endregion
+
         protected override void OnInit()
         {
             base.OnInit();
@@ -62,7 +70,7 @@
 
         private void OnClickShopPopup()
         {
-            // this.UIManager.OpenScreen<>();
+            this.UIManager.OpenScreen<GachaScreen>();
         }
 
         private void OnClickArtifactPopup()
@@ -98,6 +106,7 @@
 
         private void OnClickUpgradeAttack()
         {
+            
         }
 
         [Serializable]
@@ -134,5 +143,4 @@
             }
         }
     }
-
 }
