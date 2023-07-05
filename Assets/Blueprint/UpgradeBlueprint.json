@@ -1,0 +1,12 @@
+{
+  "AttackCoinIncrementRate": 1,
+  "AttackValueIncrementRate": 0.1,
+  "HealthCoinIncrementRate": 1,
+  "HealthValueIncrementRate": 0.1,
+  "AttackSpeedCoinIncrementRate": 5,
+  "AttackSpeedValueIncrementRate": 0.2,
+  "CriticalRateCoinIncrementRate": 5,
+  "CriticalRateValueIncrementRate": 0.2,
+  "CriticalDamageCoinIncrementRate": 3,
+  "CriticalDamageValueIncrementRate": 0.1
+}
