@@ -1,0 +1,35 @@
+{
+    "fireball": {
+        "name": "Fireball",
+        "description": "A meteor that falls from the sky and hits the target.",
+        "icon": "skill-7",
+        "cooldown": 10.0,
+        "extras": {
+            "range": 10.0
+        },
+        "effects": [
+            {
+                "id": "Damage",
+                "value": 200,
+                "target": "Enemy",
+                "duration": 0
+            }
+        ]
+    },
+    "death-shear": {
+        "name": "Death Shear",
+        "description": "A powerful attack that deals damage to all enemies on the moon path.",
+        "icon": "skill-2",
+        "cooldown": 15.0,
+        "extras": {
+        },
+        "effects": [
+            {
+                "id": "Damage",
+                "value": 1000,
+                "target": "Enemy",
+                "duration": 0
+            }
+        ]
+    }
+}
