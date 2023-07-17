@@ -2,6 +2,7 @@ namespace Utilities
 {
     using System.Collections.Generic;
     using System.Linq;
+    using UnityEngine;
 
     public class GachaHelper<TItem>
     {
@@ -37,7 +38,7 @@ namespace Utilities
         {
             var totalWeight = this.Entries.Sum(entry => entry.Weight);
 
-            var random = UnityEngine.Random.Range(0, totalWeight);
+            var random = Random.Range(0, totalWeight);
 
             var currentWeight = 0;
             foreach (var entry in this.Entries)
