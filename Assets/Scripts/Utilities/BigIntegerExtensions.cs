@@ -1,6 +1,5 @@
 namespace Utilities
 {
-
     using System.Numerics;
 
     public static class BigIntegerExtensions

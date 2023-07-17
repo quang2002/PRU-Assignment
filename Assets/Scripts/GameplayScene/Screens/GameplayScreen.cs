@@ -2,6 +2,8 @@
 {
     using System;
     using System.Numerics;
+    using GameplayScene.Screens.Components;
+    using GDK.AssetsManager.Scripts;
     using GDK.GDKUtils.Scripts;
     using GDK.UIManager.Scripts;
     using Models.Blueprint;
@@ -54,6 +56,9 @@
         private MainLocalDataController MainLocalDataController { get; set; }
 
         [Inject]
+        private InventoryDataController InventoryDataController { get; set; }
+
+        [Inject]
         private UpgradeBlueprint UpgradeBlueprint { get; set; }
 
         #endregion
@@ -77,12 +82,15 @@
         protected override void OnShow()
         {
             base.OnShow();
+
             this.RebindUpgradeAttack();
             this.RebindUpgradeHealth();
             this.RebindUpgradeAttackSpeed();
             this.RebindUpgradeCriticalRate();
             this.RebindUpgradeCriticalDamage();
         }
+
+        #region On Click Events
 
         private void OnClickShopPopup()
         {
@@ -125,6 +133,8 @@
             rebindAction.Invoke();
         }
 
+        #endregion
+
         #region Bind UI Values
 
         private void RebindUpgradeAttack()         => this.InternalRebindUpgrade(this.CoinNeededAttack, this.UpgradeAttack);
@@ -139,11 +149,11 @@
             upgradeComponent.SetUpgradeButtonState(coinNeeded <= this.MainLocalDataController.Coins);
         }
 
-        public BigInteger CoinNeededAttack         => this.MainLocalDataController.UpgradeData.AttackLevel * this.UpgradeBlueprint.AttackCoinIncrementRate;
-        public BigInteger CoinNeededHealth         => this.MainLocalDataController.UpgradeData.HealthLevel * this.UpgradeBlueprint.HealthCoinIncrementRate;
-        public BigInteger CoinNeededAttackSpeed    => this.MainLocalDataController.UpgradeData.AttackSpeedLevel * this.UpgradeBlueprint.AttackSpeedCoinIncrementRate;
-        public BigInteger CoinNeededCriticalRate   => this.MainLocalDataController.UpgradeData.CriticalRateLevel * this.UpgradeBlueprint.CriticalRateCoinIncrementRate;
-        public BigInteger CoinNeededCriticalDamage => this.MainLocalDataController.UpgradeData.CriticalDamageLevel * this.UpgradeBlueprint.CriticalDamageCoinIncrementRate;
+        public BigInteger CoinNeededAttack         => this.MainLocalDataController.UpgradeData.AttackLevel * this.UpgradeBlueprint.Attack.Coin;
+        public BigInteger CoinNeededHealth         => this.MainLocalDataController.UpgradeData.HealthLevel * this.UpgradeBlueprint.Health.Coin;
+        public BigInteger CoinNeededAttackSpeed    => this.MainLocalDataController.UpgradeData.AttackSpeedLevel * this.UpgradeBlueprint.AttackSpeed.Coin;
+        public BigInteger CoinNeededCriticalRate   => this.MainLocalDataController.UpgradeData.CriticalRateLevel * this.UpgradeBlueprint.CriticalRate.Coin;
+        public BigInteger CoinNeededCriticalDamage => this.MainLocalDataController.UpgradeData.CriticalDamageLevel * this.UpgradeBlueprint.CriticalDamage.Coin;
 
         #endregion
 

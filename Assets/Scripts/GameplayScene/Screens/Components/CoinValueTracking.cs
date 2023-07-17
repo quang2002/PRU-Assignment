@@ -1,9 +1,7 @@
 namespace GameplayScene.Screens.Components
 {
     using System.Numerics;
-    using GDK.GDKUtils.Scripts;
     using Models.DataControllers;
-    using Models.LocalData;
     using TMPro;
     using UnityEngine;
     using Utilities;

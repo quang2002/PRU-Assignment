@@ -5,15 +5,15 @@ namespace Models.LocalData
 
     public class InventoryLocalData : ILocalData
     {
-        public Dictionary<string, uint> SkillToLevel      { get; set; }
-        public Dictionary<uint, string> EquippedSkill     { get; set; }
-        public uint                     UnlockedSkillSlot { get; set; }
+        public const int MaxSkillSlot = 5;
+
+        public Dictionary<string, SkillData> SkillData     { get; set; }
+        public string[]                      EquippedSkill { get; set; }
 
         public void Initialize()
         {
-            this.SkillToLevel      = new Dictionary<string, uint>();
-            this.EquippedSkill     = new Dictionary<uint, string>();
-            this.UnlockedSkillSlot = 0;
+            this.SkillData     = new Dictionary<string, SkillData>();
+            this.EquippedSkill = new string[MaxSkillSlot];
         }
     }
 }

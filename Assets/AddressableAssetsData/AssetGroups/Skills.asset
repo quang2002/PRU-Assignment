@@ -1,0 +1,81 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Skills
+  m_EditorClassIdentifier: 
+  m_GroupName: Skills
+  m_Data:
+    m_SerializedData: []
+  m_GUID: ade06632e7e13d92c822aa17c133183a
+  m_SerializeEntries:
+  - m_GUID: 91925717a00257806af3aa0140775c6b
+    m_Address: skill-14
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 322881ce6a2020dec85c6cf3d70fae81
+    m_Address: skill-7
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 42db02e6a95b4ffcd82f4ee8289c4031
+    m_Address: skill-2
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 9280240e69cceb725a97603fd7e3bab5
+    m_Address: skill-9
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 75912d53ff9686304897f45b80467e3b
+    m_Address: skill-1
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: b5f96a870bda49215b1494bb747c43e8
+    m_Address: skill-3
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 17d33584e15761d658e85a422faa6227
+    m_Address: skill-5
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 279af43a0868f2d768cf4f57039b2c23
+    m_Address: skill-6
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 28bca56172f7d365dbba4789f9b5b301
+    m_Address: skill-10
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: d9dc422c4410a6575b4a9d486554ffca
+    m_Address: skill-4
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 1c48df0debd148d60ba70905ed43dba9
+    m_Address: skill-11
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 4c07a56ac50ee7be9b04ae83e38928b4
+    m_Address: skill-12
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 9d06bc03453412dc99512c4c42c74eb8
+    m_Address: skill-8
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: add1b2e33466b422bb10ac844f326d71
+    m_Address: skill-13
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: a0a4f9e4ac3d0a144827d32c0bc1beeb, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 20047b7112343825fb7c3abfa30158d1, type: 2}
+    - {fileID: 11400000, guid: 267397357cc94748faae616668468f48, type: 2}

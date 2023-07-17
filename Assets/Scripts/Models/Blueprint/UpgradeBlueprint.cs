@@ -1,9 +1,12 @@
 namespace Models.Blueprint
 {
+    using System;
     using GDK.AssetsManager.Scripts;
     using GDK.BlueprintManager.Scripts;
+    using Models.Common;
+    using Newtonsoft.Json;
 
-    public class UpgradeBlueprint : JsonBlueprint
+    public class UpgradeBlueprint : JsonObjectBlueprint<UpgradeBlueprint.UpgradeRecord>
     {
         public override string AddressableKey => nameof(UpgradeBlueprint);
 
@@ -11,19 +14,20 @@ namespace Models.Blueprint
         {
         }
 
-        public uint  AttackCoinIncrementRate  { get; set; }
-        public float AttackValueIncrementRate { get; set; }
+        public UpgradeRecord Attack         => this[StatTypes.Attack];
+        public UpgradeRecord Health         => this[StatTypes.Health];
+        public UpgradeRecord AttackSpeed    => this[StatTypes.AttackSpeed];
+        public UpgradeRecord CriticalRate   => this[StatTypes.CriticalRate];
+        public UpgradeRecord CriticalDamage => this[StatTypes.CriticalDamage];
 
-        public uint  HealthCoinIncrementRate  { get; set; }
-        public float HealthValueIncrementRate { get; set; }
+        [Serializable]
+        public class UpgradeRecord
+        {
+            [JsonProperty("coin")]
+            public uint Coin { get; private set; }
 
-        public uint  AttackSpeedCoinIncrementRate  { get; set; }
-        public float AttackSpeedValueIncrementRate { get; set; }
-
-        public uint  CriticalRateCoinIncrementRate  { get; set; }
-        public float CriticalRateValueIncrementRate { get; set; }
-
-        public uint  CriticalDamageCoinIncrementRate  { get; set; }
-        public float CriticalDamageValueIncrementRate { get; set; }
+            [JsonProperty("value")]
+            public float Value { get; private set; }
+        }
     }
 }
