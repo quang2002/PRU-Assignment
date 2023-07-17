@@ -1,6 +1,5 @@
 namespace GameplayScene.Background
 {
-    using System;
     using GDK.ObjectPool.Scripts;
     using UnityEngine;
 

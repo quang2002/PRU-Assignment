@@ -1,0 +1,130 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: RelicAtlas
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 1
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings:
+    - serializedVersion: 3
+      m_BuildTarget: DefaultTexturePlatform
+      m_MaxTextureSize: 2048
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: -1
+      m_TextureCompression: 1
+      m_CompressionQuality: 50
+      m_CrunchedCompression: 1
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 0
+      m_AndroidETC2FallbackOverride: 0
+      m_ForceMaximumCompressionQuality_BC6H_BC7: 0
+    packingSettings:
+      serializedVersion: 2
+      padding: 8
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 0
+      enableTightPacking: 0
+      enableAlphaDilation: 0
+    secondaryTextureSettings: {}
+    variantMultiplier: 1
+    packables:
+    - {fileID: 102900000, guid: 7c9c1cb13b861e5f3a86b4dac674a3f1, type: 3}
+    bindAsDefault: 1
+    isAtlasV2: 0
+    cachedData: {fileID: 0}
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: 5c52d7509ded14359a42ca65057e644a, type: 3}
+  - {fileID: 21300000, guid: dba30aa0aaf6af4f6ad00020dab2ccfc, type: 3}
+  - {fileID: 21300000, guid: d51ebbb0e249c7348a5ccebe45fb8f77, type: 3}
+  - {fileID: 21300000, guid: 6121e3d02f16064808c7f0c30d9053e8, type: 3}
+  - {fileID: 21300000, guid: 070cfff07f213110685efe14881de3d5, type: 3}
+  - {fileID: 21300000, guid: 14217f3137a99db1ab0fa6bb42b1d8a7, type: 3}
+  - {fileID: 21300000, guid: 3faae5918b1a1de2caa9857c1bc3c03c, type: 3}
+  - {fileID: 21300000, guid: e98e90f12b5a0cd6aba697762eb29dd3, type: 3}
+  - {fileID: 21300000, guid: 5d074712067b4d8d8977f406472a8ebc, type: 3}
+  - {fileID: 21300000, guid: 319488c2221836a40881c256d7933db6, type: 3}
+  - {fileID: 21300000, guid: cdedf023b2c4fa7c2aa1480e09e8a56e, type: 3}
+  - {fileID: 21300000, guid: 05352543f1d62e9ba9c3714dccb7d125, type: 3}
+  - {fileID: 21300000, guid: 9fe378530d03e36c09ed69f585e22251, type: 3}
+  - {fileID: 21300000, guid: 01da9f840c5031517a6e9a22549f641b, type: 3}
+  - {fileID: 21300000, guid: 401989940e04a843e90006f248cf511a, type: 3}
+  - {fileID: 21300000, guid: c429ef86f40394d9691529a57ced8041, type: 3}
+  - {fileID: 21300000, guid: fd974cd60eca145088a31c9a9a293bd5, type: 3}
+  - {fileID: 21300000, guid: 4aa408076e5987d44aaf60f8b22a99f7, type: 3}
+  - {fileID: 21300000, guid: 2a416637dc48e84f0ad0223bd99ef759, type: 3}
+  - {fileID: 21300000, guid: 8f248f880e0d7ec5b8025349c2a2996c, type: 3}
+  - {fileID: 21300000, guid: 58f5c3c823efe3ee68aa233d60235fcd, type: 3}
+  - {fileID: 21300000, guid: 900e8f79f4f4f70d9a40451733b6712b, type: 3}
+  - {fileID: 21300000, guid: 5cc758b910299c5ba982161b07557a19, type: 3}
+  - {fileID: 21300000, guid: ff90d93a64427e407b269a989ce691b3, type: 3}
+  - {fileID: 21300000, guid: 9b55feaabda9c971087c907df7df515e, type: 3}
+  - {fileID: 21300000, guid: f16633ca4cd5e2532bb45db01996cc0a, type: 3}
+  - {fileID: 21300000, guid: 2c29650b0927f7d50a0d83177dbb4eef, type: 3}
+  - {fileID: 21300000, guid: a6e9b52bd792d8ba094c9ade12eb9b89, type: 3}
+  - {fileID: 21300000, guid: 2059a89bb27cb50f2a01b2c5b85da467, type: 3}
+  - {fileID: 21300000, guid: b3592b4c8353213e1897d71e007b24f4, type: 3}
+  - {fileID: 21300000, guid: d8a0b6dc5c5f63ef79da2b9396dc02c2, type: 3}
+  - {fileID: 21300000, guid: e2b6341d7797e960eb2b99ae2f0cfd8f, type: 3}
+  - {fileID: 21300000, guid: 49c3ff6da6267d65d9a2b35f626026f9, type: 3}
+  - {fileID: 21300000, guid: 0dd2fb2eff30098c88126391e2f91701, type: 3}
+  - {fileID: 21300000, guid: a0b99f5e697a73029be5f586b9f87df4, type: 3}
+  - {fileID: 21300000, guid: c0a6374f80b635e54bd7fc33a53a5ba8, type: 3}
+  - {fileID: 21300000, guid: b46e02afd60ed6c5094856be860a4803, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - relic-30
+  - relic-9
+  - relic-15
+  - relic-18
+  - relic-11
+  - relic-3
+  - relic-8
+  - relic-10
+  - relic-27
+  - relic-29
+  - relic-5
+  - relic-32
+  - relic-7
+  - relic-31
+  - relic-28
+  - relic-35
+  - relic-2
+  - relic-17
+  - relic-20
+  - relic-36
+  - relic-37
+  - relic-13
+  - relic-26
+  - relic-16
+  - relic-6
+  - relic-12
+  - relic-22
+  - relic-38
+  - relic-25
+  - relic-1
+  - relic-24
+  - relic-4
+  - relic-21
+  - relic-14
+  - relic-34
+  - relic-33
+  - relic-23
+  m_RenderDataMap: {}
+  m_Tag: RelicAtlas
+  m_IsVariant: 0

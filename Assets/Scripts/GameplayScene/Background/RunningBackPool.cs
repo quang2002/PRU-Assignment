@@ -4,6 +4,7 @@ namespace GameplayScene.Background
     using System.Collections.Generic;
     using GDK.ObjectPool.Scripts;
     using UnityEngine;
+    using Random = UnityEngine.Random;
 
     public class RunningBackPool : GameObjectPool<RunningBack>
     {
@@ -94,7 +95,7 @@ namespace GameplayScene.Background
 
         private RunningBackConfig GetRandomRunningBackConfig()
         {
-            return this.RunningBackConfigs[UnityEngine.Random.Range(0, this.RunningBackConfigs.Length)];
+            return this.RunningBackConfigs[Random.Range(0, this.RunningBackConfigs.Length)];
         }
     }
 }
