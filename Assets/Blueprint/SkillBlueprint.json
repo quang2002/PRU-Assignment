@@ -9,7 +9,7 @@
         },
         "effects": [
             {
-                "id": "Damage",
+                "id": "damage",
                 "value": 200,
                 "target": "Enemy",
                 "duration": 0
@@ -25,7 +25,7 @@
         },
         "effects": [
             {
-                "id": "Damage",
+                "id": "damage",
                 "value": 1000,
                 "target": "Enemy",
                 "duration": 0
