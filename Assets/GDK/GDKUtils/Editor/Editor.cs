@@ -2,9 +2,10 @@
 {
     using System.Linq;
     using UnityEditor;
+    using UnityEngine;
 
     public class Editor<T> : Editor
-        where T : UnityEngine.Object
+        where T : Object
     {
         // ReSharper disable once InconsistentNaming
         public new T target => base.target as T;

@@ -2,7 +2,6 @@ namespace GDK.AudioManager.Scripts
 {
     using GDK.AssetsManager.Scripts;
     using UnityEngine;
-    using UnityEngine.AddressableAssets;
     using Zenject;
 
     [ExecuteAlways]

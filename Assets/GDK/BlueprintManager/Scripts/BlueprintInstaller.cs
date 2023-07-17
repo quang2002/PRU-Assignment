@@ -1,6 +1,5 @@
 namespace GDK.BlueprintManager.Scripts
 {
-
     using Zenject;
 
     public class BlueprintInstaller : Installer<BlueprintInstaller>
