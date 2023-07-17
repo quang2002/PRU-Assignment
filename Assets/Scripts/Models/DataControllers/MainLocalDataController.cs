@@ -1,7 +1,7 @@
 namespace Models.DataControllers
 {
     using System.Numerics;
-    using GDK.LocalData.Scripts;
+    using GDK.LocalData;
     using Models.LocalData;
 
     public class MainLocalDataController : ILocalDataController

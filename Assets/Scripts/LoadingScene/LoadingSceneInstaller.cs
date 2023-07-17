@@ -1,7 +1,7 @@
 ﻿namespace LoadingScene
 {
     using GDK;
-    using GDK.UIManager.Scripts;
+    using GDK.UIManager;
     using LoadingScene.Screens;
 
     public class LoadingSceneInstaller : GDKSceneContext

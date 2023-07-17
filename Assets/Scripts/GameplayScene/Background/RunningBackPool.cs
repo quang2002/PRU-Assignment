@@ -2,7 +2,7 @@ namespace GameplayScene.Background
 {
     using System;
     using System.Collections.Generic;
-    using GDK.ObjectPool.Scripts;
+    using GDK.ObjectPool;
     using UnityEngine;
     using Random = UnityEngine.Random;
 

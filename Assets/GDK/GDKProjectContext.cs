@@ -1,9 +1,9 @@
 ﻿namespace GDK
 {
-    using GDK.AssetsManager.Scripts;
-    using GDK.BlueprintManager.Scripts;
-    using GDK.GDKUtils.Scripts;
-    using GDK.LocalData.Scripts;
+    using GDK.AssetsManager;
+    using GDK.BlueprintManager;
+    using GDK.GDKUtils;
+    using GDK.LocalData;
     using GDK.Services.Unity;
     using Zenject;
 
@@ -15,7 +15,7 @@
 
             this.Container.InstallDebugLogger();
 
-            this.Container.Bind<IAssetsManager>().To<AssetsManager.Scripts.AssetsManager>().AsCached().NonLazy();
+            this.Container.Bind<IAssetsManager>().To<AssetsManager.AssetsManager>().AsCached().NonLazy();
 
             BlueprintInstaller.Install(this.Container);
 

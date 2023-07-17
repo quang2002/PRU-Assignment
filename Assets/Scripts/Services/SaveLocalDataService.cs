@@ -1,6 +1,6 @@
 namespace Services
 {
-    using GDK.LocalData.Scripts;
+    using GDK.LocalData;
     using GDK.Services.Unity;
     using Zenject;
 

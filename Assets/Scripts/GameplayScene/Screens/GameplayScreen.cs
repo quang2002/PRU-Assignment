@@ -2,10 +2,8 @@
 {
     using System;
     using System.Numerics;
-    using GameplayScene.Screens.Components;
-    using GDK.AssetsManager.Scripts;
-    using GDK.GDKUtils.Scripts;
-    using GDK.UIManager.Scripts;
+    using GDK.GDKUtils;
+    using GDK.UIManager;
     using Models.Blueprint;
     using Models.DataControllers;
     using TMPro;
@@ -52,14 +50,19 @@
 
         #region Inject
 
-        [Inject]
         private MainLocalDataController MainLocalDataController { get; set; }
-
-        [Inject]
         private InventoryDataController InventoryDataController { get; set; }
+        private UpgradeBlueprint        UpgradeBlueprint        { get; set; }
 
         [Inject]
-        private UpgradeBlueprint UpgradeBlueprint { get; set; }
+        private void Inject(MainLocalDataController mainLocalDataController,
+                            InventoryDataController inventoryDataController,
+                            UpgradeBlueprint        upgradeBlueprint)
+        {
+            this.MainLocalDataController = mainLocalDataController;
+            this.InventoryDataController = inventoryDataController;
+            this.UpgradeBlueprint        = upgradeBlueprint;
+        }
 
         #endregion
 

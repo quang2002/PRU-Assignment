@@ -1,6 +1,5 @@
 namespace GameplayScene.Player
 {
-    using System;
     using UnityEngine;
 
     [RequireComponent(typeof(SpriteRenderer))]
@@ -26,7 +25,6 @@ namespace GameplayScene.Player
 
         private void InternalSkill()
         {
-            
         }
 
         #region Animator

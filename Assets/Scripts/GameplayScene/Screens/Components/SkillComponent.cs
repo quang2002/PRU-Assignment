@@ -1,7 +1,7 @@
 namespace GameplayScene.Screens.Components
 {
-    using GDK.AssetsManager.Scripts;
-    using Models.Blueprint;
+    using GameplayScene.Ability.System;
+    using GDK.AssetsManager;
     using Models.DataControllers;
     using Signals;
     using UnityEngine;
@@ -28,17 +28,22 @@ namespace GameplayScene.Screens.Components
 
         #region Inject
 
-        [Inject]
-        private IAssetsManager AssetsManager { get; set; }
-
-        [Inject]
-        private SignalBus SignalBus { get; set; }
-
-        [Inject]
-        private SkillBlueprint SkillBlueprint { get; set; }
-
-        [Inject]
+        private IAssetsManager          AssetsManager           { get; set; }
+        private SignalBus               SignalBus               { get; set; }
+        private IAbilitySystem          AbilitySystem           { get; set; }
         private InventoryDataController InventoryDataController { get; set; }
+
+        [Inject]
+        private void Inject(IAssetsManager          assetsManager,
+                            SignalBus               signalBus,
+                            IAbilitySystem          abilitySystem,
+                            InventoryDataController inventoryDataController)
+        {
+            this.AssetsManager           = assetsManager;
+            this.SignalBus               = signalBus;
+            this.AbilitySystem           = abilitySystem;
+            this.InventoryDataController = inventoryDataController;
+        }
 
         #endregion
 
@@ -48,20 +53,20 @@ namespace GameplayScene.Screens.Components
             set => this.CooldownMask.fillAmount = value;
         }
 
-        public SkillBlueprint.SkillRecord SkillRecord { get; private set; }
+        public BaseSkill Skill { get; private set; }
 
         public void ReloadData()
         {
             var skillID = this.InventoryDataController.GetSkillAtSlot(this.SlotID)?.ID;
 
-            if (skillID is null || (this.SkillRecord = this.SkillBlueprint[skillID]) is null)
+            if (skillID is null || (this.Skill = this.AbilitySystem.GetSkill(skillID)) is null)
             {
                 this.Mask.SetActive(false);
                 this.SkillImage.sprite = null;
                 return;
             }
 
-            var sprite = this.AssetsManager.LoadSprite(this.SkillRecord.Icon);
+            var sprite = this.AssetsManager.LoadSprite(this.Skill.SkillRecord.Icon);
 
             this.Mask.SetActive(sprite);
             this.SkillImage.sprite = sprite;
@@ -71,11 +76,22 @@ namespace GameplayScene.Screens.Components
         {
             this.ReloadData();
             this.SignalBus.Subscribe<EquippedSkillSignal>(this.OnEquippedSkill);
+            this.GetComponent<Button>().onClick.AddListener(this.OnClickSkillButton);
         }
 
         private void OnDestroy()
         {
             this.SignalBus.Unsubscribe<EquippedSkillSignal>(this.OnEquippedSkill);
+        }
+
+        private void Update()
+        {
+            if (this.Skill is null)
+            {
+                return;
+            }
+
+            this.CooldownFillAmount = this.Skill.CooldownPercent;
         }
 
         private void OnEquippedSkill(EquippedSkillSignal obj)
@@ -88,12 +104,14 @@ namespace GameplayScene.Screens.Components
             this.ReloadData();
         }
 
-        private void Update()
+        private void OnClickSkillButton()
         {
-            if (this.SkillRecord is null)
+            if (this.Skill is null)
             {
                 return;
             }
+
+            this.Skill.Cast();
         }
     }
 }

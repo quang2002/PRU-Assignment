@@ -1,6 +1,6 @@
 namespace GameplayScene.Background
 {
-    using GDK.ObjectPool.Scripts;
+    using GDK.ObjectPool;
     using UnityEngine;
 
     [RequireComponent(typeof(SpriteRenderer))]
