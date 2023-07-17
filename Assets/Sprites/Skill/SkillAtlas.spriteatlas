@@ -1,0 +1,84 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: SkillAtlas
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 1
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings:
+    - serializedVersion: 3
+      m_BuildTarget: DefaultTexturePlatform
+      m_MaxTextureSize: 2048
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: -1
+      m_TextureCompression: 1
+      m_CompressionQuality: 50
+      m_CrunchedCompression: 1
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 0
+      m_AndroidETC2FallbackOverride: 0
+      m_ForceMaximumCompressionQuality_BC6H_BC7: 0
+    packingSettings:
+      serializedVersion: 2
+      padding: 8
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 0
+      enableTightPacking: 0
+      enableAlphaDilation: 0
+    secondaryTextureSettings: {}
+    variantMultiplier: 1
+    packables:
+    - {fileID: 102900000, guid: c4b23bd779d13ad5a9db59fb56672f84, type: 3}
+    bindAsDefault: 1
+    isAtlasV2: 0
+    cachedData: {fileID: 0}
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: 28bca56172f7d365dbba4789f9b5b301, type: 3}
+  - {fileID: 21300000, guid: 9d06bc03453412dc99512c4c42c74eb8, type: 3}
+  - {fileID: 21300000, guid: 75912d53ff9686304897f45b80467e3b, type: 3}
+  - {fileID: 21300000, guid: add1b2e33466b422bb10ac844f326d71, type: 3}
+  - {fileID: 21300000, guid: 17d33584e15761d658e85a422faa6227, type: 3}
+  - {fileID: 21300000, guid: 42db02e6a95b4ffcd82f4ee8289c4031, type: 3}
+  - {fileID: 21300000, guid: 91925717a00257806af3aa0140775c6b, type: 3}
+  - {fileID: 21300000, guid: b5f96a870bda49215b1494bb747c43e8, type: 3}
+  - {fileID: 21300000, guid: 279af43a0868f2d768cf4f57039b2c23, type: 3}
+  - {fileID: 21300000, guid: 4c07a56ac50ee7be9b04ae83e38928b4, type: 3}
+  - {fileID: 21300000, guid: d9dc422c4410a6575b4a9d486554ffca, type: 3}
+  - {fileID: 21300000, guid: 1c48df0debd148d60ba70905ed43dba9, type: 3}
+  - {fileID: 21300000, guid: 9280240e69cceb725a97603fd7e3bab5, type: 3}
+  - {fileID: 21300000, guid: 322881ce6a2020dec85c6cf3d70fae81, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - skill-10
+  - skill-8
+  - skill-1
+  - skill-13
+  - skill-5
+  - skill-2
+  - skill-14
+  - skill-3
+  - skill-6
+  - skill-12
+  - skill-4
+  - skill-11
+  - skill-9
+  - skill-7
+  m_RenderDataMap: {}
+  m_Tag: SkillAtlas
+  m_IsVariant: 0
