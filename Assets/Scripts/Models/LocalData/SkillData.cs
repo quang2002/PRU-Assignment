@@ -1,7 +1,6 @@
 namespace Models.LocalData
 {
     using System;
-    using Models.Blueprint;
 
     [Serializable]
     public class SkillData

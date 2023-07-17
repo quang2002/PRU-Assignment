@@ -1,6 +1,5 @@
 namespace GDK.AudioManager.Editor
 {
-    using GDK.AudioManager.Scripts;
     using GDK.GDKUtils.Editor;
     using UnityEditor;
     using UnityEngine;

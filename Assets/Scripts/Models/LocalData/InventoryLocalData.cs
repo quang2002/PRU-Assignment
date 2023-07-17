@@ -1,7 +1,7 @@
 namespace Models.LocalData
 {
     using System.Collections.Generic;
-    using GDK.LocalData.Scripts;
+    using GDK.LocalData;
 
     public class InventoryLocalData : ILocalData
     {

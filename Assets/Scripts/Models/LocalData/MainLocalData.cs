@@ -1,7 +1,7 @@
 namespace Models.LocalData
 {
     using System.Numerics;
-    using GDK.LocalData.Scripts;
+    using GDK.LocalData;
 
     public class MainLocalData : ILocalData
     {

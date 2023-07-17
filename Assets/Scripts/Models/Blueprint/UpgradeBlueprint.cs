@@ -1,8 +1,8 @@
 namespace Models.Blueprint
 {
     using System;
-    using GDK.AssetsManager.Scripts;
-    using GDK.BlueprintManager.Scripts;
+    using GDK.AssetsManager;
+    using GDK.BlueprintManager;
     using Models.Common;
     using Newtonsoft.Json;
 

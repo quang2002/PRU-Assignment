@@ -1,7 +1,7 @@
 ﻿namespace LoadingScene.Screens
 {
     using System;
-    using GDK.UIManager.Scripts;
+    using GDK.UIManager;
     using TMPro;
     using UnityEngine;
     using UnityEngine.SceneManagement;

@@ -1,6 +1,6 @@
 namespace GameplayScene.Screens
 {
-    using GDK.UIManager.Scripts;
+    using GDK.UIManager;
     using UnityEngine;
     using UnityEngine.UI;
 
