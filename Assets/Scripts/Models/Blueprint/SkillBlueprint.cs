@@ -38,11 +38,22 @@ namespace Models.Blueprint
         [Serializable]
         public class EffectRecord
         {
+            public EffectRecord()
+            {
+            }
+
+            public EffectRecord(string id, float value, float duration)
+            {
+                this.ID       = id;
+                this.Value    = value;
+                this.Duration = duration;
+            }
+
             [JsonProperty("id")]
             public string ID { get; private set; }
 
             [JsonProperty("value")]
-            public string Value { get; private set; }
+            public float Value { get; private set; }
 
             [JsonProperty("target")]
             public EffectTarget Target { get; private set; }
