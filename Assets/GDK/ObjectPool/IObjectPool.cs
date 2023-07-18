@@ -1,9 +1,8 @@
 namespace GDK.ObjectPool
 {
-    public interface IObjectPool<TObject>
-        where TObject : IPooledObject<TObject>
+    public interface IObjectPool
     {
-        TObject Instantiate();
-        void    Release(TObject obj);
+        object Instantiate(object model);
+        void   Release(object     obj);
     }
 }

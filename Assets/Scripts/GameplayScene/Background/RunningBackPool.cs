@@ -6,7 +6,7 @@ namespace GameplayScene.Background
     using UnityEngine;
     using Random = UnityEngine.Random;
 
-    public class RunningBackPool : GameObjectPool<RunningBack>
+    public class RunningBackPool : UnityObjectPool<RunningBack>
     {
         [Serializable]
         public class RunningBackConfig
@@ -50,7 +50,7 @@ namespace GameplayScene.Background
             }
 
             var removeList = new HashSet<RunningBack>();
-            
+
             foreach (var children in this.UsedObjects)
             {
                 if (children.transform.position.x < this.LeftBound - children.TileWidth / 2)
@@ -78,7 +78,7 @@ namespace GameplayScene.Background
 
         protected override void OnInstantiate(RunningBack obj)
         {
-            base.OnInstantiate(obj);
+            obj.gameObject.SetActive(true);
 
             var runningBackConfig = this.GetRandomRunningBackConfig();
 
@@ -91,6 +91,11 @@ namespace GameplayScene.Background
             );
 
             obj.Speed = runningBackConfig.Speed;
+        }
+
+        protected override void OnRelease(RunningBack obj)
+        {
+            obj.gameObject.SetActive(false);
         }
 
         private RunningBackConfig GetRandomRunningBackConfig()

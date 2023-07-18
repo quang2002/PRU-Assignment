@@ -1,8 +1,7 @@
 namespace GDK.ObjectPool
 {
-    public interface IPooledObject<TObject>
-        where TObject : IPooledObject<TObject>
+    public interface IPooledObject
     {
-        IObjectPool<TObject> ObjectPool { get; set; }
+        IObjectPool ObjectPool { get; protected internal set; }
     }
 }

@@ -4,9 +4,9 @@ namespace GameplayScene.Background
     using UnityEngine;
 
     [RequireComponent(typeof(SpriteRenderer))]
-    public class RunningBack : MonoBehaviour, IPooledObject<RunningBack>
+    public class RunningBack : MonoBehaviour, IPooledObject
     {
-        public IObjectPool<RunningBack> ObjectPool { get; set; }
+        IObjectPool IPooledObject.ObjectPool { get; set; }
 
         public float          TileWidth      { get; set; }
         public SpriteRenderer SpriteRenderer { get; set; }
