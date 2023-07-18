@@ -24,10 +24,13 @@ namespace Models.Blueprint
         public class UpgradeRecord
         {
             [JsonProperty("coin")]
-            public uint Coin { get; private set; }
+            public long Coin { get; private set; }
 
             [JsonProperty("value")]
             public float Value { get; private set; }
+
+            [JsonProperty("base")]
+            public float BaseValue { get; private set; }
         }
     }
 }

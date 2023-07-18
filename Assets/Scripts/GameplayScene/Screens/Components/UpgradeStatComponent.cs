@@ -1,7 +1,6 @@
 namespace GameplayScene.Screens.Components
 {
     using System;
-    using System.Numerics;
     using Models.Blueprint;
     using Models.Common;
     using Models.DataControllers;
@@ -32,16 +31,13 @@ namespace GameplayScene.Screens.Components
         #region Inject
 
         private MainLocalDataController MainLocalDataController { get; set; }
-        private InventoryDataController InventoryDataController { get; set; }
         private UpgradeBlueprint        UpgradeBlueprint        { get; set; }
 
         [Inject]
         private void Inject(MainLocalDataController mainLocalDataController,
-                            InventoryDataController inventoryDataController,
                             UpgradeBlueprint        upgradeBlueprint)
         {
             this.MainLocalDataController = mainLocalDataController;
-            this.InventoryDataController = inventoryDataController;
             this.UpgradeBlueprint        = upgradeBlueprint;
         }
 
@@ -57,13 +53,13 @@ namespace GameplayScene.Screens.Components
 
         private void OnClickUpgrade()
         {
-            var coinNeeded = this.CurrentLevel * (BigInteger)this.BlueprintCoin;
+            var coinNeeded = this.CoinPerLevel * this.CurrentStatLevel;
 
-            var postCoins = this.MainLocalDataController.Coins - coinNeeded;
+            var newCoins = this.MainLocalDataController.Coins - coinNeeded;
 
-            if (postCoins < 0) return;
+            if (newCoins < 0) return;
 
-            this.MainLocalDataController.SetCoins(postCoins);
+            this.MainLocalDataController.SetCoins(newCoins);
 
             this.UpgradeSkill();
             this.RebindUpgrade();
@@ -71,7 +67,7 @@ namespace GameplayScene.Screens.Components
 
         private void RebindUpgrade()
         {
-            var coinNeeded = this.CurrentLevel * (BigInteger)this.BlueprintCoin;
+            var coinNeeded = this.CoinPerLevel * this.CurrentStatLevel;
 
             this.TextCoinNeeded.text     = coinNeeded.ToShortString();
             this.BtnUpgrade.interactable = coinNeeded <= this.MainLocalDataController.Coins;
@@ -79,20 +75,10 @@ namespace GameplayScene.Screens.Components
 
         private void UpgradeSkill()
         {
-            Action upgradeAction = this.StatType switch
-            {
-                StatType.Attack         => this.MainLocalDataController.LevelUpAttack,
-                StatType.Health         => this.MainLocalDataController.LevelUpHealth,
-                StatType.AttackSpeed    => this.MainLocalDataController.LevelUpAttackSpeed,
-                StatType.CriticalRate   => this.MainLocalDataController.LevelUpCriticalRate,
-                StatType.CriticalDamage => this.MainLocalDataController.LevelUpCriticalDamage,
-                _                       => throw new ArgumentOutOfRangeException()
-            };
-
-            upgradeAction();
+            this.MainLocalDataController.LevelUp(this.StatType);
         }
 
-        private uint CurrentLevel => this.StatType switch
+        private long CoinPerLevel => this.StatType switch
         {
             StatType.Attack         => this.UpgradeBlueprint.Attack.Coin,
             StatType.Health         => this.UpgradeBlueprint.Health.Coin,
@@ -102,7 +88,7 @@ namespace GameplayScene.Screens.Components
             _                       => throw new ArgumentOutOfRangeException()
         };
 
-        private uint BlueprintCoin => this.StatType switch
+        private long CurrentStatLevel => this.StatType switch
         {
             StatType.Attack         => this.MainLocalDataController.UpgradeData.AttackLevel,
             StatType.Health         => this.MainLocalDataController.UpgradeData.HealthLevel,

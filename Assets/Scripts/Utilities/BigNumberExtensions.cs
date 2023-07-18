@@ -1,7 +1,5 @@
 namespace Utilities
 {
-    using System.Numerics;
-
     public static class BigNumberExtensions
     {
         public static readonly string[] DeclaredPostfix =
@@ -37,7 +35,7 @@ namespace Utilities
             "OcVg",
         };
 
-        public static string ToShortString(this float number)
+        public static string ToShortString(this long number)
         {
             var postfixIndex = -1;
 
