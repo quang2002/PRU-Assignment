@@ -1,0 +1,10 @@
+{
+    "death-bringer": {
+        "name": "Death Bringer",
+        "animator": "DeathBringer",
+        "damage": 100,
+        "health": 1000,
+        "damage-inc": 100,
+        "health-inc": 1000
+    }
+}

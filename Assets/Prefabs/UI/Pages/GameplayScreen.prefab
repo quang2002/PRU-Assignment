@@ -89,6 +89,7 @@ GameObject:
   - component: {fileID: 2240574791049678889}
   - component: {fileID: 6673649199374417021}
   - component: {fileID: 4897926539221276978}
+  - component: {fileID: 130232491066031018}
   m_Layer: 5
   m_Name: UpgradeCritDamage
   m_TagString: Untagged
@@ -157,6 +158,22 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 0.5
+--- !u!114 &130232491066031018
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 73067733822468698}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b22a45dbcb14268b382c62ec5a493f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <StatType>k__BackingField: 4
+  <BtnUpgrade>k__BackingField: {fileID: 6800276503219956367}
+  <TextCoinNeeded>k__BackingField: {fileID: 6792522655327651337}
+  <TextCurrentValue>k__BackingField: {fileID: 6960274726682085873}
 --- !u!1 &208775852561920535
 GameObject:
   m_ObjectHideFlags: 0
@@ -221,26 +238,6 @@ MonoBehaviour:
   <BtnArtifact>k__BackingField: {fileID: 5293150586908873050}
   <BtnShop>k__BackingField: {fileID: 4011888157084719641}
   <BtnExit>k__BackingField: {fileID: 7961255022073296495}
-  <UpgradeAttack>k__BackingField:
-    <BtnUpgrade>k__BackingField: {fileID: 2716009528402195515}
-    <TextCoinNeeded>k__BackingField: {fileID: 7118824603752888323}
-    <TextCurrentValue>k__BackingField: {fileID: 2120737049807689800}
-  <UpgradeHealth>k__BackingField:
-    <BtnUpgrade>k__BackingField: {fileID: 1021150534896410493}
-    <TextCoinNeeded>k__BackingField: {fileID: 9217993466086131412}
-    <TextCurrentValue>k__BackingField: {fileID: 1506851136020330616}
-  <UpgradeAttackSpeed>k__BackingField:
-    <BtnUpgrade>k__BackingField: {fileID: 3715680339500571705}
-    <TextCoinNeeded>k__BackingField: {fileID: 8188793170170943575}
-    <TextCurrentValue>k__BackingField: {fileID: 8173933462974297393}
-  <UpgradeCriticalRate>k__BackingField:
-    <BtnUpgrade>k__BackingField: {fileID: 5793572401610556536}
-    <TextCoinNeeded>k__BackingField: {fileID: 5808637268869162260}
-    <TextCurrentValue>k__BackingField: {fileID: 3235337607103587975}
-  <UpgradeCriticalDamage>k__BackingField:
-    <BtnUpgrade>k__BackingField: {fileID: 6800276503219956367}
-    <TextCoinNeeded>k__BackingField: {fileID: 6792522655327651337}
-    <TextCurrentValue>k__BackingField: {fileID: 6960274726682085873}
 --- !u!1 &650433408455561936
 GameObject:
   m_ObjectHideFlags: 0
@@ -470,6 +467,7 @@ GameObject:
   - component: {fileID: 5612512032208434258}
   - component: {fileID: 4931124412800536321}
   - component: {fileID: 2893380206423357829}
+  - component: {fileID: 7942813469613370398}
   m_Layer: 5
   m_Name: UpgradeAttack
   m_TagString: Untagged
@@ -538,6 +536,22 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 0.5
+--- !u!114 &7942813469613370398
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1159013607546059051}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b22a45dbcb14268b382c62ec5a493f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <StatType>k__BackingField: 0
+  <BtnUpgrade>k__BackingField: {fileID: 2716009528402195515}
+  <TextCoinNeeded>k__BackingField: {fileID: 7118824603752888323}
+  <TextCurrentValue>k__BackingField: {fileID: 2120737049807689800}
 --- !u!1 &1402589980645242487
 GameObject:
   m_ObjectHideFlags: 0
@@ -2230,6 +2244,7 @@ GameObject:
   - component: {fileID: 4989183529698468232}
   - component: {fileID: 4783075587743366135}
   - component: {fileID: 1245189639936170656}
+  - component: {fileID: 1606440649876410333}
   m_Layer: 5
   m_Name: UpgradeCritRate
   m_TagString: Untagged
@@ -2298,6 +2313,22 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 0.5
+--- !u!114 &1606440649876410333
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3030298208494739548}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b22a45dbcb14268b382c62ec5a493f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <StatType>k__BackingField: 3
+  <BtnUpgrade>k__BackingField: {fileID: 5793572401610556536}
+  <TextCoinNeeded>k__BackingField: {fileID: 5808637268869162260}
+  <TextCurrentValue>k__BackingField: {fileID: 3235337607103587975}
 --- !u!1 &3090072183011738651
 GameObject:
   m_ObjectHideFlags: 0
@@ -2766,6 +2797,7 @@ GameObject:
   - component: {fileID: 4411438898739822442}
   - component: {fileID: 2859817467262591285}
   - component: {fileID: 6613408284788174518}
+  - component: {fileID: 6041751611255961240}
   m_Layer: 5
   m_Name: UpgradeHealth
   m_TagString: Untagged
@@ -2834,6 +2866,22 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 0.5
+--- !u!114 &6041751611255961240
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4000712123089324270}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b22a45dbcb14268b382c62ec5a493f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <StatType>k__BackingField: 1
+  <BtnUpgrade>k__BackingField: {fileID: 1021150534896410493}
+  <TextCoinNeeded>k__BackingField: {fileID: 9217993466086131412}
+  <TextCurrentValue>k__BackingField: {fileID: 1506851136020330616}
 --- !u!1 &4660208983393118781
 GameObject:
   m_ObjectHideFlags: 0
@@ -3904,6 +3952,7 @@ GameObject:
   - component: {fileID: 6001279920111570661}
   - component: {fileID: 8213244468891767542}
   - component: {fileID: 4054147379281707012}
+  - component: {fileID: 420088547253759674}
   m_Layer: 5
   m_Name: UpgradeAttackSpeed
   m_TagString: Untagged
@@ -3972,6 +4021,22 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 0.5
+--- !u!114 &420088547253759674
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7301434177978874116}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b22a45dbcb14268b382c62ec5a493f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <StatType>k__BackingField: 2
+  <BtnUpgrade>k__BackingField: {fileID: 3715680339500571705}
+  <TextCoinNeeded>k__BackingField: {fileID: 8188793170170943575}
+  <TextCurrentValue>k__BackingField: {fileID: 8173933462974297393}
 --- !u!1 &7318784737703754984
 GameObject:
   m_ObjectHideFlags: 0
