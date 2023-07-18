@@ -1,12 +1,13 @@
 namespace GDK.BlueprintManager
 {
     using System;
+    using System.Collections;
     using System.Collections.Generic;
     using GDK.AssetsManager;
     using Newtonsoft.Json;
     using UnityEngine;
 
-    public abstract class JsonArrayBlueprint<TValue> : IBlueprint
+    public abstract class JsonArrayBlueprint<TValue> : IBlueprint, IEnumerable<TValue>
     {
         #region Inject
 
@@ -36,6 +37,13 @@ namespace GDK.BlueprintManager
             this.Data = data;
 
             this.AssetsManager.Unload(this.AddressableKey);
+        }
+
+        public IEnumerator<TValue> GetEnumerator() => this.Data.GetEnumerator();
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return this.GetEnumerator();
         }
     }
 }

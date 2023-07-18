@@ -43,7 +43,7 @@ namespace GameplayScene.Ability.System
             this.Entity   = null;
         }
 
-        public void UpdatePerFrame(float deltaTime)
+        public virtual void UpdatePerFrame(float deltaTime)
         {
             this.Duration -= deltaTime;
             if (this.Duration <= 0) this.RemoveEffect();

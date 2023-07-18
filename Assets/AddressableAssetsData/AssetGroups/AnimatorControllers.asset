@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: AnimatorControllers
+  m_EditorClassIdentifier: 
+  m_GroupName: AnimatorControllers
+  m_Data:
+    m_SerializedData: []
+  m_GUID: a962a7c3f9ee2437088a3f3c36243efa
+  m_SerializeEntries:
+  - m_GUID: bf6fb3d4c6a1caa46b006d41551908c5
+    m_Address: DeathBringer
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: a0a4f9e4ac3d0a144827d32c0bc1beeb, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 1961bf96fb1f4f1b2b76f1a50b761ab0, type: 2}
+    - {fileID: 11400000, guid: faf23786e9c5596d79800167bb3b9129, type: 2}

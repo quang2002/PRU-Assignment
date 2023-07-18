@@ -1,6 +1,6 @@
 namespace Models.Common
 {
-    public enum StatTypes
+    public enum StatType
     {
         Attack,
         Health,

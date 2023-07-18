@@ -106,12 +106,7 @@ namespace GameplayScene.Screens.Components
 
         private void OnClickSkillButton()
         {
-            if (this.Skill is null)
-            {
-                return;
-            }
-
-            this.Skill.Cast();
+            this.Skill?.Cast();
         }
     }
 }

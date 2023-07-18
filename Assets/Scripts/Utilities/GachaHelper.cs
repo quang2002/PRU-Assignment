@@ -54,4 +54,13 @@ namespace Utilities
             return default;
         }
     }
+
+    public static class GachaExtensions
+    {
+        public static T GetRandom<T>(this IEnumerable<T> items)
+        {
+            var enumerable = items.ToList();
+            return enumerable.ElementAt(Random.Range(0, enumerable.Count()));
+        }
+    }
 }

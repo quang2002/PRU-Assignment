@@ -1,12 +1,13 @@
 namespace GDK.BlueprintManager
 {
     using System;
+    using System.Collections;
     using System.Collections.Generic;
     using GDK.AssetsManager;
     using Newtonsoft.Json;
     using UnityEngine;
 
-    public abstract class JsonObjectBlueprint<TValue> : IBlueprint
+    public abstract class JsonObjectBlueprint<TValue> : IBlueprint, IEnumerable<KeyValuePair<string, TValue>>
     {
         #region Inject
 
@@ -44,8 +45,13 @@ namespace GDK.BlueprintManager
 
         public TValue this[int key] => this[key.ToString()];
 
-        public IEnumerator<TValue>                       Values  => this.Data.Values.GetEnumerator();
-        public IEnumerator<string>                       Keys    => this.Data.Keys.GetEnumerator();
-        public IEnumerator<KeyValuePair<string, TValue>> Entries => this.Data.GetEnumerator();
+        public IEnumerable<TValue>                       Values          => this.Data.Values;
+        public IEnumerable<string>                       Keys            => this.Data.Keys;
+        public IEnumerator<KeyValuePair<string, TValue>> GetEnumerator() => this.Data.GetEnumerator();
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return this.GetEnumerator();
+        }
     }
 }

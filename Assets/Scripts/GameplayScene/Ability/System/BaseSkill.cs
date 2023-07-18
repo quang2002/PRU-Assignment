@@ -1,18 +1,23 @@
 namespace GameplayScene.Ability.System
 {
     using Models.Blueprint;
+    using Signals;
+    using Zenject;
 
     public abstract class BaseSkill
     {
-        public abstract string SkillID { get; }
-        public abstract void   Perform();
+        public          SignalBus SignalBus { get; }
+        public abstract string    SkillID   { get; }
+        public abstract void      Perform();
 
         public SkillBlueprint.SkillRecord SkillRecord     { get; private set; }
         public float                      Cooldown        { get; private set; }
         public float                      CooldownPercent => this.Cooldown / this.SkillRecord.Cooldown;
 
-        protected BaseSkill(SkillBlueprint skillBlueprint)
+        protected BaseSkill(SkillBlueprint skillBlueprint,
+                            SignalBus      signalBus)
         {
+            this.SignalBus = signalBus;
             // ReSharper disable once VirtualMemberCallInConstructor
             this.SkillRecord = skillBlueprint[this.SkillID];
         }
@@ -46,6 +51,11 @@ namespace GameplayScene.Ability.System
 
             this.Perform();
             this.ResetCooldown();
+
+            this.SignalBus.Fire(new CastedSkillSignal
+            {
+                Skill = this
+            });
         }
     }
 }

@@ -1,6 +1,7 @@
 namespace GameplayScene.Ability.System
 {
     using global::System.Collections.Generic;
+    using global::System.Linq;
     using UnityEngine;
     using Zenject;
 
@@ -40,7 +41,7 @@ namespace GameplayScene.Ability.System
 
         public void Tick()
         {
-            foreach (var effect in this.Effects)
+            foreach (var effect in this.Effects.ToArray())
             {
                 effect.UpdatePerFrame(Time.deltaTime);
             }

@@ -10,7 +10,10 @@ public class PRUProjectContext : GDKProjectContext
         base.InstallBindings();
 
         this.Container.DeclareSignal<EquippedSkillSignal>();
-        
+        this.Container.DeclareSignal<CastedSkillSignal>();
+        this.Container.DeclareSignal<UpgradedStatSignal>();
+        this.Container.DeclareSignal<TookDamageSignal>();
+
         this.Container.BindInterfacesTo<SaveLocalDataService>().AsCached().NonLazy();
     }
 }
