@@ -5,10 +5,10 @@ namespace Models.LocalData
     [Serializable]
     public struct UpgradeData
     {
-        public uint AttackLevel         { get; set; }
-        public uint HealthLevel         { get; set; }
-        public uint AttackSpeedLevel    { get; set; }
-        public uint CriticalRateLevel   { get; set; }
-        public uint CriticalDamageLevel { get; set; }
+        public long AttackLevel         { get; set; }
+        public long HealthLevel         { get; set; }
+        public long AttackSpeedLevel    { get; set; }
+        public long CriticalRateLevel   { get; set; }
+        public long CriticalDamageLevel { get; set; }
     }
 }

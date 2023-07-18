@@ -1,22 +1,27 @@
 {
     "Attack": {
         "coin": 1,
-        "value": 0.1
+        "value": 0.5,
+        "base": 1
     },
     "Health": {
         "coin": 1,
-        "value": 0.1
+        "value": 1,
+        "base": 1
     },
     "AttackSpeed": {
         "coin": 5,
-        "value": 0.2
+        "value": 0.2,
+        "base": 0
     },
     "CriticalRate": {
         "coin": 5,
-        "value": 0.2
+        "value": 0.2,
+        "base": 0
     },
     "CriticalDamage": {
         "coin": 3,
-        "value": 0.1
+        "value": 0.1,
+        "base": 0
     }
 }

@@ -1,6 +1,5 @@
 namespace GameplayScene.Screens.Components
 {
-    using System.Numerics;
     using Models.DataControllers;
     using TMPro;
     using UnityEngine;
@@ -12,7 +11,7 @@ namespace GameplayScene.Screens.Components
         [field: SerializeField]
         public TMP_Text TextValue { get; private set; }
 
-        public BigInteger OldCoinValue { get; private set; } = -1;
+        public long OldCoinValue { get; private set; } = -1;
 
 
         private void Update()

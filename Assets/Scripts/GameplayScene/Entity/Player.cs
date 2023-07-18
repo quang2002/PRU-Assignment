@@ -11,7 +11,7 @@ namespace GameplayScene.Entity
     public class Player : MonoBehaviour, IEntity
     {
         public List<BaseEffect> Effects { get; } = new();
-        public long             Health  { get; set; }
+        public float             Health  { get; set; }
 
         public SpriteRenderer SpriteRenderer { get; private set; }
         public Animator       Animator       { get; private set; }

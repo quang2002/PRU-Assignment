@@ -6,7 +6,7 @@ namespace Models.LocalData
     public class SkillData
     {
         public string ID    { get; init; }
-        public uint   Level { get; set; }
+        public long   Level { get; set; }
 
         public override bool Equals(object obj)
         {

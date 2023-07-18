@@ -17,7 +17,7 @@ namespace GameplayScene.Entity
     public class Enemy : MonoBehaviour, IEntity, IPooledObject, IDisposable
     {
         public List<BaseEffect>   Effects    { get; } = new();
-        public long               Health     { get; set; }
+        public float              Health     { get; set; }
         IObjectPool IPooledObject.ObjectPool { get; set; }
 
         #region Properties
@@ -31,7 +31,7 @@ namespace GameplayScene.Entity
             get => this.Animator.GetBool(AnimationKeyMoving);
             set => this.Animator.SetBool(AnimationKeyMoving, value);
         }
-        
+
         public IEnemyBehaviour EnemyBehaviour { get; private set; }
 
         public Animator      Animator   { get; private set; }

@@ -6,6 +6,6 @@ namespace GameplayScene.Ability.System
     {
         public List<BaseEffect> Effects { get; }
 
-        public long Health { get; set; }
+        public float Health { get; set; }
     }
 }
