@@ -2,7 +2,7 @@ namespace Utilities
 {
     using System.Numerics;
 
-    public static class BigIntegerExtensions
+    public static class BigNumberExtensions
     {
         public static readonly string[] DeclaredPostfix =
         {
@@ -37,18 +37,17 @@ namespace Utilities
             "OcVg",
         };
 
-        public static string ToShortString(this BigInteger bigInteger)
+        public static string ToShortString(this float number)
         {
             var postfixIndex = -1;
 
-            while (bigInteger > 1000)
+            while (number > 1000)
             {
-                bigInteger /= 1000;
+                number /= 1000;
                 postfixIndex++;
             }
 
-            return postfixIndex == -1 ? bigInteger.ToString() : $"{bigInteger}{DeclaredPostfix[postfixIndex]}";
+            return postfixIndex == -1 ? number.ToString() : $"{number}{DeclaredPostfix[postfixIndex]}";
         }
     }
-
 }
