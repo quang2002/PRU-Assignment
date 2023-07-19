@@ -91,7 +91,7 @@ namespace GameplayScene.Screens.Components
         {
             StatType.Attack         => this.UpgradeBlueprint.Attack.Coin,
             StatType.Health         => this.UpgradeBlueprint.Health.Coin,
-            StatType.AttackSpeed    => this.UpgradeBlueprint.AttackSpeed.Coin,
+            StatType.HealthSteal    => this.UpgradeBlueprint.HealthSteal.Coin,
             StatType.CriticalRate   => this.UpgradeBlueprint.CriticalRate.Coin,
             StatType.CriticalDamage => this.UpgradeBlueprint.CriticalDamage.Coin,
             _                       => throw new ArgumentOutOfRangeException()
@@ -101,7 +101,7 @@ namespace GameplayScene.Screens.Components
         {
             StatType.Attack         => this.MainLocalDataController.UpgradeData.AttackLevel,
             StatType.Health         => this.MainLocalDataController.UpgradeData.HealthLevel,
-            StatType.AttackSpeed    => this.MainLocalDataController.UpgradeData.AttackSpeedLevel,
+            StatType.HealthSteal    => this.MainLocalDataController.UpgradeData.HealthStealLevel,
             StatType.CriticalRate   => this.MainLocalDataController.UpgradeData.CriticalRateLevel,
             StatType.CriticalDamage => this.MainLocalDataController.UpgradeData.CriticalDamageLevel,
             _                       => throw new ArgumentOutOfRangeException()

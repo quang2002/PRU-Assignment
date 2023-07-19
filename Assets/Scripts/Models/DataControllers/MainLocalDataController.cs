@@ -39,7 +39,7 @@ namespace Models.DataControllers
         private void OnEnemyDead(EnemyDeadSignal signal)
         {
             this.Exp   += signal.EnemyRecord.Exp;
-            this.Coins += signal.EnemyRecord.Coins;
+            this.Coins += signal.EnemyRecord.Coins * this.Level;
         }
 
         public long Coins
@@ -82,8 +82,8 @@ namespace Models.DataControllers
                 case StatType.Health:
                     upgradeData.HealthLevel++;
                     break;
-                case StatType.AttackSpeed:
-                    upgradeData.AttackSpeedLevel++;
+                case StatType.HealthSteal:
+                    upgradeData.HealthStealLevel++;
                     break;
                 case StatType.CriticalRate:
                     upgradeData.CriticalRateLevel++;
@@ -107,7 +107,7 @@ namespace Models.DataControllers
             {
                 StatType.Attack         => upgradeBlueprint.Attack.Value * mainLocalData.UpgradeData.AttackLevel + upgradeBlueprint.Attack.BaseValue,
                 StatType.Health         => upgradeBlueprint.Health.Value * mainLocalData.UpgradeData.HealthLevel + upgradeBlueprint.Health.BaseValue,
-                StatType.AttackSpeed    => upgradeBlueprint.AttackSpeed.Value * mainLocalData.UpgradeData.AttackSpeedLevel + upgradeBlueprint.AttackSpeed.BaseValue,
+                StatType.HealthSteal    => upgradeBlueprint.HealthSteal.Value * mainLocalData.UpgradeData.HealthStealLevel + upgradeBlueprint.HealthSteal.BaseValue,
                 StatType.CriticalRate   => upgradeBlueprint.CriticalRate.Value * mainLocalData.UpgradeData.CriticalRateLevel + upgradeBlueprint.CriticalRate.BaseValue,
                 StatType.CriticalDamage => upgradeBlueprint.CriticalDamage.Value * mainLocalData.UpgradeData.CriticalDamageLevel + upgradeBlueprint.CriticalDamage.BaseValue,
                 _                       => throw new ArgumentOutOfRangeException(nameof(statType), statType, null)

@@ -50,6 +50,7 @@ namespace GameplayScene.Entity
             this.EffectFactory           = effectFactory;
 
             this.SignalBus.Subscribe<TookDamageSignal>(this.OnTookDamage);
+            this.SignalBus.Subscribe<EnemyDeadSignal>(this.OnEnemyDead);
         }
 
         #endregion
@@ -105,8 +106,18 @@ namespace GameplayScene.Entity
             {
                 return;
             }
+        }
 
-            this.SetHurt();
+        private void OnEnemyDead(EnemyDeadSignal signal)
+        {
+            this.InternalHealthSteal();
+        }
+
+        private void InternalHealthSteal()
+        {
+            var healAmount = this.MainLocalDataController.GetStatValue(StatType.HealthSteal);
+            var maxHealth  = this.MainLocalDataController.GetStatValue(StatType.Health);
+            this.Health = Mathf.Clamp(this.Health + healAmount, 0, maxHealth);
         }
 
         private static bool VisibleInScreen(Component e)
@@ -115,20 +126,15 @@ namespace GameplayScene.Entity
             return screenPoint.x < Screen.width && screenPoint.y < Screen.height && screenPoint is { x: > 0, y: > 0 };
         }
 
+
         #region Animator
 
         private static readonly int AnimationKeyIsAlive = Animator.StringToHash("IsAlive");
-        private static readonly int AnimationKeyHurt    = Animator.StringToHash("Hurt");
         private static readonly int AnimationKeyAttack  = Animator.StringToHash("Attack");
 
         public void SetIsAlive(bool isAlive)
         {
             this.Animator.SetBool(AnimationKeyIsAlive, isAlive);
-        }
-
-        public void SetHurt()
-        {
-            this.Animator.SetTrigger(AnimationKeyHurt);
         }
 
         public void SetAttack()
