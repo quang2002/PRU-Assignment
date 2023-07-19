@@ -1,10 +1,12 @@
 ﻿namespace GameplayScene.Screens
 {
+    using DG.Tweening;
     using GameplayScene.Screens.Adapter;
     using GDK.UIManager;
     using Models.DataControllers;
     using Signals;
     using UnityEngine;
+    using UnityEngine.UI;
     using Zenject;
 
     public class SkillSettingScreen : BasePopup
@@ -22,6 +24,12 @@
 
         [field: SerializeField]
         public GameObject EquippedSkillTemplate { get; private set; }
+        
+        [field: SerializeField]
+        public GameObject SwordImage1 { get; private set; }
+        
+        [field: SerializeField]
+        public GameObject SwordImage2 { get; private set; }
 
         #endregion
 
@@ -51,6 +59,11 @@
         {
             base.OnShow();
             this.ReloadSkill();
+            this.SwordImage1.transform.DORotate(new Vector3(0, 0, 60), 1, RotateMode.FastBeyond360).
+                 SetLoops(-1, LoopType.Yoyo).SetEase(Ease.Linear);
+            this.SwordImage2.transform.DORotate(new Vector3(0, 0, -60), 1, RotateMode.FastBeyond360).
+                 SetLoops(-1, LoopType.Yoyo).SetEase(Ease.Linear);
+
         }
 
         private static void ClearList(Transform listTransform, GameObject skillTemplate)
