@@ -8,6 +8,7 @@ namespace GameplayScene.Entity
     using GDK.AssetsManager;
     using GDK.ObjectPool;
     using Models.Blueprint;
+    using Models.DataControllers;
     using Services;
     using Signals;
     using UnityEditor.Animations;
@@ -52,27 +53,30 @@ namespace GameplayScene.Entity
 
         #region Inject
 
-        private IAssetsManager         AssetsManager          { get; set; }
-        private EnemyBlueprint         EnemyBlueprint         { get; set; }
-        private EnemyBehaviourProvider EnemyBehaviourProvider { get; set; }
-        private Player                 Player                 { get; set; }
-        private SignalBus              SignalBus              { get; set; }
-        private DamageTextService      DamageTextService      { get; set; }
+        private IAssetsManager          AssetsManager           { get; set; }
+        private EnemyBlueprint          EnemyBlueprint          { get; set; }
+        private EnemyBehaviourProvider  EnemyBehaviourProvider  { get; set; }
+        private Player                  Player                  { get; set; }
+        private SignalBus               SignalBus               { get; set; }
+        private DamageTextService       DamageTextService       { get; set; }
+        private MainLocalDataController MainLocalDataController { get; set; }
 
         [Inject]
-        private void Inject(IAssetsManager         assetsManager,
-                            EnemyBehaviourProvider enemyBehaviourProvider,
-                            EnemyBlueprint         enemyBlueprint,
-                            Player                 player,
-                            SignalBus              signalBus,
-                            DamageTextService      damageTextService)
+        private void Inject(IAssetsManager          assetsManager,
+                            EnemyBehaviourProvider  enemyBehaviourProvider,
+                            EnemyBlueprint          enemyBlueprint,
+                            MainLocalDataController mainLocalDataController,
+                            Player                  player,
+                            SignalBus               signalBus,
+                            DamageTextService       damageTextService)
         {
-            this.AssetsManager          = assetsManager;
-            this.EnemyBlueprint         = enemyBlueprint;
-            this.EnemyBehaviourProvider = enemyBehaviourProvider;
-            this.Player                 = player;
-            this.SignalBus              = signalBus;
-            this.DamageTextService      = damageTextService;
+            this.AssetsManager           = assetsManager;
+            this.EnemyBlueprint          = enemyBlueprint;
+            this.EnemyBehaviourProvider  = enemyBehaviourProvider;
+            this.Player                  = player;
+            this.SignalBus               = signalBus;
+            this.DamageTextService       = damageTextService;
+            this.MainLocalDataController = mainLocalDataController;
 
             signalBus.Subscribe<TookDamageSignal>(this.OnTookDamageSignal);
         }
@@ -135,10 +139,9 @@ namespace GameplayScene.Entity
             this.Animator.runtimeAnimatorController = animatorController;
             this.Animator.Rebind();
 
-            this.Health         = enemyRecord.BaseHealth + enemyRecord.HealthInc * level;
-            this.Damage         = enemyRecord.BaseDamage + enemyRecord.DamageInc * level;
-            
-            Debug.Log(this.Damage);
+            this.Health = enemyRecord.BaseHealth + enemyRecord.HealthInc * level;
+            this.Damage = enemyRecord.BaseDamage + enemyRecord.DamageInc * level;
+
             this.EnemyBehaviour = this.EnemyBehaviourProvider.CreateBehaviour(enemyID, this);
 
             this.Player.Enemies.Add(this);
@@ -151,10 +154,13 @@ namespace GameplayScene.Entity
                 return;
             }
 
+            var (damage, critical) = this.MainLocalDataController.GetDamageWithCritical(signal.Damage);
+
             this.DamageTextService.Instantiate(new DamageTextService.Model
             {
-                Damage   = signal.Damage,
-                Position = this.transform.position + Vector3.up * 0.4f
+                Damage   = (long)damage,
+                Position = this.transform.position + Vector3.up * 0.4f,
+                Critical = critical
             });
         }
 

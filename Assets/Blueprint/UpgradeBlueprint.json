@@ -16,12 +16,12 @@
     },
     "CriticalRate": {
         "coin": 5,
-        "value": 0.2,
-        "base": 0
+        "value": 0.01,
+        "base": 5
     },
     "CriticalDamage": {
-        "coin": 3,
+        "coin": 5,
         "value": 0.1,
-        "base": 0
+        "base": 1
     }
 }
