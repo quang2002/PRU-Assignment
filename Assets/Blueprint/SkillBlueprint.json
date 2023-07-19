@@ -5,16 +5,7 @@
         "icon": "skill-7",
         "cooldown": 10.0,
         "extras": {
-            "range": 10.0
-        },
-        "effects": [
-            {
-                "id": "damage",
-                "value": 200,
-                "target": "Enemy",
-                "duration": 0
-            }
-        ]
+        }
     },
     "death-shear": {
         "name": "Death Shear",
@@ -22,14 +13,6 @@
         "icon": "skill-2",
         "cooldown": 15.0,
         "extras": {
-        },
-        "effects": [
-            {
-                "id": "damage",
-                "value": 1000,
-                "target": "Enemy",
-                "duration": 0
-            }
-        ]
+        }
     }
 }

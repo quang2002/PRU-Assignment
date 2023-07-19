@@ -17,7 +17,7 @@ namespace Services
         private ILogger        Logger        { get; set; }
 
         [Inject]
-        public void Inject(IAssetsManager assetsManager, ILogger logger)
+        private void Inject(IAssetsManager assetsManager, ILogger logger)
         {
             this.AssetsManager = assetsManager;
             this.Logger        = logger;

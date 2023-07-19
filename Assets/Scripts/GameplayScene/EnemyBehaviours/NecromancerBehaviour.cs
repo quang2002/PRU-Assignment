@@ -1,5 +1,6 @@
 namespace GameplayScene.EnemyBehaviours
 {
+    using GameplayScene.Ability.Effects;
     using GameplayScene.Ability.System;
     using GameplayScene.Entity;
     using GDK.ObjectPool;
@@ -15,13 +16,13 @@ namespace GameplayScene.EnemyBehaviours
         #region Inject
 
         public Player         Player         { get; }
-        public EffectFactory  EffectFactory  { get; }
+        public IAbilitySystem AbilitySystem  { get; }
         public EnemyBlueprint EnemyBlueprint { get; }
 
-        public NecromancerBehaviour(Player player, EffectFactory effectFactory, EnemyBlueprint enemyBlueprint)
+        public NecromancerBehaviour(Player player, IAbilitySystem abilitySystem, EnemyBlueprint enemyBlueprint)
         {
             this.Player         = player;
-            this.EffectFactory  = effectFactory;
+            this.AbilitySystem  = abilitySystem;
             this.EnemyBlueprint = enemyBlueprint;
         }
 
@@ -44,7 +45,11 @@ namespace GameplayScene.EnemyBehaviours
 
         public void OnAttack()
         {
-            this.EffectFactory.Create(new("damage", this.Enemy.Damage, 0)).ApplyEffect(this.Player);
+            this.AbilitySystem.ApplyEffect(new BaseEffect.EffectData
+            {
+                EffectType = typeof(DamageEffect),
+                Value      = this.Enemy.Damage
+            }, this.Player);
         }
 
         public void OnDead()

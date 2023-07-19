@@ -7,26 +7,35 @@ namespace GameplayScene.Ability.System
 
     public class AbilitySystem : ITickable, IAbilitySystem
     {
-        private HashSet<BaseEffect> Effects { get; } = new();
+        private HashSet<BaseEffect>           Effects { get; } = new();
+        private Dictionary<string, BaseSkill> Skills  { get; } = new();
 
-        private Dictionary<string, BaseSkill> Skills { get; } = new();
+        public DiContainer Container { get; }
 
-        public AbilitySystem(List<BaseSkill> skills)
+        public AbilitySystem(List<BaseSkill> skills, DiContainer container)
         {
+            this.Container = container;
+
             foreach (var skill in skills)
             {
+                skill.AbilitySystem = this;
                 this.Skills.Add(skill.SkillID, skill);
             }
         }
 
-        public void AddEffect(BaseEffect effect)
+        public void ApplyEffect(BaseEffect.EffectData effectData, IEntity entity)
         {
+            var type   = effectData.EffectType;
+            var effect = (BaseEffect)this.Container.Instantiate(type, new[] { effectData });
+
             this.Effects.Add(effect);
+            effect.ApplyEffect(entity);
         }
 
         public void RemoveEffect(BaseEffect effect)
         {
             this.Effects.Remove(effect);
+            effect.RemoveEffect();
         }
 
         public BaseSkill GetSkill(string skillID)
@@ -44,6 +53,8 @@ namespace GameplayScene.Ability.System
             foreach (var effect in this.Effects.ToArray())
             {
                 effect.UpdatePerFrame(Time.deltaTime);
+                effect.Duration -= Time.deltaTime;
+                if (effect.Duration <= 0) this.RemoveEffect(effect);
             }
 
             foreach (var (_, skill) in this.Skills)

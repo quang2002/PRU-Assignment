@@ -6,13 +6,15 @@ namespace GameplayScene.Ability.System
 
     public abstract class BaseSkill
     {
-        public          SignalBus SignalBus { get; }
-        public abstract string    SkillID   { get; }
-        public abstract void      Perform();
+        public abstract string                     SkillID         { get; }
+        public          float                      Cooldown        { get; private set; }
+        public          float                      CooldownPercent => this.Cooldown / this.SkillRecord.Cooldown;
+        public          IAbilitySystem             AbilitySystem   { get; set; }
+        public          SkillBlueprint.SkillRecord SkillRecord     { get; private set; }
 
-        public SkillBlueprint.SkillRecord SkillRecord     { get; private set; }
-        public float                      Cooldown        { get; private set; }
-        public float                      CooldownPercent => this.Cooldown / this.SkillRecord.Cooldown;
+        #region Inject
+
+        protected SignalBus SignalBus { get; }
 
         protected BaseSkill(SkillBlueprint skillBlueprint,
                             SignalBus      signalBus)
@@ -21,6 +23,8 @@ namespace GameplayScene.Ability.System
             // ReSharper disable once VirtualMemberCallInConstructor
             this.SkillRecord = skillBlueprint[this.SkillID];
         }
+
+        #endregion
 
         public void ResetCooldown()
         {
@@ -57,5 +61,7 @@ namespace GameplayScene.Ability.System
                 Skill = this
             });
         }
+
+        protected abstract void Perform();
     }
 }

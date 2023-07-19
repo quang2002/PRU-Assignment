@@ -3,6 +3,7 @@ namespace GameplayScene.Entity
     using System.Collections.Generic;
     using System.Linq;
     using Common;
+    using GameplayScene.Ability.Effects;
     using GameplayScene.Ability.System;
     using Models.Blueprint;
     using Models.DataControllers;
@@ -36,18 +37,18 @@ namespace GameplayScene.Entity
         private SignalBus               SignalBus               { get; set; }
         private MainLocalDataController MainLocalDataController { get; set; }
         private VFXService              VFXService              { get; set; }
-        private EffectFactory           EffectFactory           { get; set; }
+        private IAbilitySystem          AbilitySystem           { get; set; }
 
         [Inject]
         private void Inject(SignalBus               signalBus,
                             MainLocalDataController mainLocalDataController,
                             VFXService              vfxService,
-                            EffectFactory           effectFactory)
+                            IAbilitySystem          abilitySystem)
         {
             this.SignalBus               = signalBus;
             this.MainLocalDataController = mainLocalDataController;
             this.VFXService              = vfxService;
-            this.EffectFactory           = effectFactory;
+            this.AbilitySystem           = abilitySystem;
 
             this.SignalBus.Subscribe<TookDamageSignal>(this.OnTookDamage);
             this.SignalBus.Subscribe<EnemyDeadSignal>(this.OnEnemyDead);
@@ -89,9 +90,11 @@ namespace GameplayScene.Entity
 
             foreach (var enemy in this.Enemies.Where(VisibleInScreen))
             {
-                this.EffectFactory
-                    .Create(new SkillBlueprint.EffectRecord("damage", damage, 0))
-                    .ApplyEffect(enemy);
+                this.AbilitySystem.ApplyEffect(new BaseEffect.EffectData
+                {
+                    EffectType = typeof(DamageEffect),
+                    Value      = damage
+                }, enemy);
             }
         }
 

@@ -9,24 +9,20 @@ namespace GameplayScene.Ability.Effects
     {
         public SignalBus SignalBus { get; }
 
-        public DamageEffect(IAbilitySystem abilitySystem, SkillBlueprint.EffectRecord effectRecord, SignalBus signalBus) : base(abilitySystem, effectRecord)
+        public DamageEffect(EffectData effectData, SignalBus signalBus) : base(effectData)
         {
             this.SignalBus = signalBus;
         }
 
-        public override string EffectID => "damage";
-
         public override void UpdatePerFrame(float deltaTime)
         {
-            this.Entity.Health -= this.EffectRecord.Value;
+            this.Entity.Health -= this.Data.Value;
 
             this.SignalBus.Fire(new TookDamageSignal
             {
                 Entity = this.Entity,
-                Damage = (long)this.EffectRecord.Value
+                Damage = this.Data.Value
             });
-
-            base.UpdatePerFrame(deltaTime);
         }
     }
 }

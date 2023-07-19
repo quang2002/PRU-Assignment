@@ -14,7 +14,7 @@ namespace GameplayScene.Ability.Skills
 
         public override string SkillID => "fireball";
 
-        public override void Perform()
+        protected override void Perform()
         {
         }
     }
