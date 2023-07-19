@@ -1,6 +1,7 @@
 namespace Models.DataControllers
 {
     using System.Collections.Generic;
+    using System.Linq;
     using GDK.LocalData;
     using Models.Blueprint;
     using Models.LocalData;
@@ -90,6 +91,18 @@ namespace Models.DataControllers
             {
                 return null;
             }
+        }
+
+        public void RemoveSkill(string skillId)
+        {
+            for (var i = 0; i < this.InventoryLocalData.EquippedSkill.Length; i++)
+            {
+                if (!this.InventoryLocalData.EquippedSkill[i].Equals(skillId)) continue;
+                this.InventoryLocalData.EquippedSkill[i] = null;
+                break;
+            }
+
+            this.SignalBus.Fire<EquippedSkillSignal>();
         }
     }
 }
