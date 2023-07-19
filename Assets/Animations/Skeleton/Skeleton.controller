@@ -20,7 +20,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 51748b68dd237c45bb342ddbbe593303, type: 2}
+  m_Motion: {fileID: 7400000, guid: 54613bfaa04e8ef22b98dd880948004e, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -99,7 +99,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 144c36a095aafed0e9beb64691f2cd91, type: 2}
+  m_Motion: {fileID: 7400000, guid: 20da5836d676cab76b21aacbbda50ddc, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -139,7 +139,7 @@ AnimatorController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Necromancer
+  m_Name: Skeleton
   serializedVersion: 5
   m_AnimatorParameters:
   - m_Name: Health
@@ -256,7 +256,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: acd6e2b9f566f23a1981b886f70d4a3b, type: 2}
+  m_Motion: {fileID: 7400000, guid: 02b72454b01c95e7bb6a535b6abde6a6, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -282,7 +282,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 7b9f7b7d939c8312baad1c2541759c8a, type: 2}
+  m_Motion: {fileID: 7400000, guid: cd3058f840a9eba1aa10cef7a2a737a4, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 

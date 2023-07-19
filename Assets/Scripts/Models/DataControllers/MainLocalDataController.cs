@@ -39,7 +39,7 @@ namespace Models.DataControllers
         private void OnEnemyDead(EnemyDeadSignal signal)
         {
             this.Exp   += signal.EnemyRecord.Exp;
-            this.Coins += signal.EnemyRecord.Coins * this.Level;
+            this.Coins += signal.EnemyRecord.Coins * (this.Level + 1);
         }
 
         public long Coins

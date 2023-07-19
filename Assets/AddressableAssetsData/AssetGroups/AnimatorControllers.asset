@@ -25,6 +25,14 @@ MonoBehaviour:
     m_Address: Necromancer
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: 8553f53b939263ed2909d64083ad2172
+    m_Address: NightBorne
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: c6051815406a03f138f415e7d71a9150
+    m_Address: Skeleton
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: a0a4f9e4ac3d0a144827d32c0bc1beeb, type: 2}
   m_SchemaSet:

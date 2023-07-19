@@ -6,17 +6,37 @@
         "coins": 1,
         "damage": 2,
         "health": 5,
-        "damage-inc": 5,
+        "damage-inc": 3,
         "health-inc": 10
     },
     "necromancer": {
         "name": "Necromancer",
         "animator": "Necromancer",
-        "exp": 2,
+        "exp": 1,
         "coins": 2,
         "damage": 1,
         "health": 2,
         "damage-inc": 10,
+        "health-inc": 5
+    },
+    "night-borne": {
+        "name": "Night Borne",
+        "animator": "NightBorne",
+        "exp": 1,
+        "coins": 2,
+        "damage": 1,
+        "health": 2,
+        "damage-inc": 4,
+        "health-inc": 5
+    },
+    "skeleton": {
+        "name": "Skeleton",
+        "animator": "Skeleton",
+        "exp": 1,
+        "coins": 2,
+        "damage": 1,
+        "health": 2,
+        "damage-inc": 4,
         "health-inc": 5
     }
 }
