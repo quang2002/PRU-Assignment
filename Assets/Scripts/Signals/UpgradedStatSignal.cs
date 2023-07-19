@@ -1,6 +1,6 @@
 namespace Signals
 {
-    using Models.Common;
+    using Common;
 
     public class UpgradedStatSignal
     {

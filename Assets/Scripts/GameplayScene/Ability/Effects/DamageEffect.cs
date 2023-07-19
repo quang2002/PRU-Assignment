@@ -18,6 +18,8 @@ namespace GameplayScene.Ability.Effects
 
         public override void UpdatePerFrame(float deltaTime)
         {
+            this.Entity.Health -= this.EffectRecord.Value;
+
             this.SignalBus.Fire(new TookDamageSignal
             {
                 Entity = this.Entity,
