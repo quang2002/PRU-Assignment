@@ -2,10 +2,14 @@ namespace GameplayScene.Entity
 {
     using System;
     using System.Collections.Generic;
+    using System.Linq;
+    using System.Threading.Tasks;
     using GameplayScene.Ability.System;
     using GDK.AssetsManager;
     using GDK.ObjectPool;
     using Models.Blueprint;
+    using Services;
+    using Signals;
     using UnityEditor.Animations;
     using UnityEngine;
     using Zenject;
@@ -32,6 +36,8 @@ namespace GameplayScene.Entity
             set => this.Animator.SetBool(AnimationKeyMoving, value);
         }
 
+        public bool HasBehaviour => this.EnemyBehaviour is not null;
+
         public IEnemyBehaviour EnemyBehaviour { get; private set; }
 
         public Animator      Animator   { get; private set; }
@@ -48,15 +54,24 @@ namespace GameplayScene.Entity
         private IAssetsManager         AssetsManager          { get; set; }
         private EnemyBlueprint         EnemyBlueprint         { get; set; }
         private EnemyBehaviourProvider EnemyBehaviourProvider { get; set; }
+        private Player                 Player                 { get; set; }
+        private DamageTextService      DamageTextService      { get; set; }
 
         [Inject]
         private void Inject(IAssetsManager         assetsManager,
                             EnemyBehaviourProvider enemyBehaviourProvider,
-                            EnemyBlueprint         enemyBlueprint)
+                            EnemyBlueprint         enemyBlueprint,
+                            Player                 player,
+                            SignalBus              signalBus,
+                            DamageTextService      damageTextService)
         {
             this.AssetsManager          = assetsManager;
             this.EnemyBlueprint         = enemyBlueprint;
             this.EnemyBehaviourProvider = enemyBehaviourProvider;
+            this.Player                 = player;
+            this.DamageTextService      = damageTextService;
+
+            signalBus.Subscribe<TookDamageSignal>(this.OnTookDamageSignal);
         }
 
         #endregion
@@ -73,6 +88,14 @@ namespace GameplayScene.Entity
         {
             this.Animator.SetInteger(AnimationKeyHealth, (int)this.Health);
             this.EnemyBehaviour?.UpdatePerFrame();
+
+            if (!this.IsAlive() && this.HasBehaviour)
+            {
+                this.EnemyBehaviour?.OnDead();
+                this.EnemyBehaviour = null;
+                var deathAnimationLength = this.Animator.GetNextAnimatorStateInfo(0).length;
+                Task.Delay((int)(deathAnimationLength * 1000)).ContinueWith(_ => this.Release());
+            }
         }
 
         public void Attack()
@@ -107,12 +130,28 @@ namespace GameplayScene.Entity
             this.EnemyBehaviour = this.EnemyBehaviourProvider.CreateBehaviour(enemyID, this);
 
             this.Collider2D.size = this.SpriteRenderer.size;
+            this.Player.Enemies.Add(this);
+        }
+
+        private void OnTookDamageSignal(TookDamageSignal signal)
+        {
+            if (signal.Entity is not Enemy enemy || enemy != this || !this.HasBehaviour)
+            {
+                return;
+            }
+
+            this.DamageTextService.Instantiate(new DamageTextService.Model
+            {
+                Damage   = signal.Damage,
+                Position = this.transform.position + Vector3.up * 0.4f
+            });
         }
 
         public void Dispose()
         {
             this.EnemyBehaviour                     = null;
             this.Animator.runtimeAnimatorController = null;
+            this.Player.Enemies.Remove(this);
         }
     }
 }

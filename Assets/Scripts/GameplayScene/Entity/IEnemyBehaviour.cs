@@ -11,5 +11,7 @@ namespace GameplayScene.Entity
         public void UpdatePerFrame();
 
         public void OnAttack();
+
+        public void OnDead();
     }
 }

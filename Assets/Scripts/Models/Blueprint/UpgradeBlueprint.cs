@@ -1,9 +1,9 @@
 namespace Models.Blueprint
 {
     using System;
+    using Common;
     using GDK.AssetsManager;
     using GDK.BlueprintManager;
-    using Models.Common;
     using Newtonsoft.Json;
 
     public class UpgradeBlueprint : JsonObjectBlueprint<UpgradeBlueprint.UpgradeRecord>

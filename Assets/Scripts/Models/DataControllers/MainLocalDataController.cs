@@ -1,9 +1,9 @@
 namespace Models.DataControllers
 {
     using System;
+    using Common;
     using GDK.LocalData;
     using Models.Blueprint;
-    using Models.Common;
     using Models.LocalData;
 
     public class MainLocalDataController : ILocalDataController

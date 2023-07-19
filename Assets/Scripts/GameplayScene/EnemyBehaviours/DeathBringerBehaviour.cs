@@ -40,16 +40,16 @@ namespace GameplayScene.EnemyBehaviours
             }
 
             this.Enemy.IsMoving = this.Enemy.Rigidbody2D.velocity.x != 0;
-
-            if (this.Enemy.Health <= 0)
-            {
-                this.Enemy.Release();
-            }
         }
 
         public void OnAttack()
         {
             this.EffectFactory.Create(new("damage", 100, 0)).ApplyEffect(this.Player);
+        }
+
+        public void OnDead()
+        {
+            this.Enemy.Rigidbody2D.velocity = Vector2.zero;
         }
     }
 }

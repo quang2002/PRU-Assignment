@@ -5,6 +5,7 @@
     using GameplayScene.Screens;
     using GDK;
     using GDK.UIManager;
+    using Services;
 
     public class GameplaySceneInstaller : GDKSceneContext
     {
@@ -36,7 +37,14 @@
                 .NonLazy();
 
             this.Container
-                .BindInterfacesTo<EnemySpawner>()
+                .Bind<VFXService>()
+                .FromNewComponentOnNewGameObject()
+                .AsCached()
+                .NonLazy();
+
+            this.Container
+                .Bind<DamageTextService>()
+                .FromComponentInHierarchy()
                 .AsCached()
                 .NonLazy();
 
