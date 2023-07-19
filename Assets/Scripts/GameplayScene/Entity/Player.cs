@@ -1,10 +1,14 @@
 namespace GameplayScene.Entity
 {
+    using System;
     using System.Collections.Generic;
     using System.Linq;
+    using System.Threading.Tasks;
     using Common;
     using GameplayScene.Ability.Effects;
     using GameplayScene.Ability.System;
+    using GameplayScene.Screens;
+    using GDK.UIManager;
     using Models.Blueprint;
     using Models.DataControllers;
     using Services;
@@ -23,7 +27,8 @@ namespace GameplayScene.Entity
         public SpriteRenderer SpriteRenderer { get; private set; }
         public Animator       Animator       { get; private set; }
 
-        public HashSet<Enemy> Enemies { get; } = new();
+        public HashSet<Enemy> Enemies    { get; } = new();
+        public bool           IsPlayable { get; private set; }
 
         #region Serialize Fields
 
@@ -38,17 +43,20 @@ namespace GameplayScene.Entity
         private MainLocalDataController MainLocalDataController { get; set; }
         private VFXService              VFXService              { get; set; }
         private IAbilitySystem          AbilitySystem           { get; set; }
+        private UIManager               UIManager               { get; set; }
 
         [Inject]
         private void Inject(SignalBus               signalBus,
                             MainLocalDataController mainLocalDataController,
                             VFXService              vfxService,
-                            IAbilitySystem          abilitySystem)
+                            IAbilitySystem          abilitySystem,
+                            UIManager               uiManager)
         {
             this.SignalBus               = signalBus;
             this.MainLocalDataController = mainLocalDataController;
             this.VFXService              = vfxService;
             this.AbilitySystem           = abilitySystem;
+            this.UIManager               = uiManager;
 
             this.SignalBus.Subscribe<TookDamageSignal>(this.OnTookDamage);
             this.SignalBus.Subscribe<EnemyDeadSignal>(this.OnEnemyDead);
@@ -65,13 +73,23 @@ namespace GameplayScene.Entity
         private void Start()
         {
             this.InternalResetHealth();
+            this.IsPlayable = true;
         }
 
         private void Update()
         {
-            if (!this.IsAlive())
+            if (!this.IsAlive() && this.IsPlayable)
             {
+                this.IsPlayable = false;
                 this.SetIsAlive(false);
+
+                this.UIManager.OpenScreen<TransitionScreen>(new TransitionScreen.Model
+                {
+                    WhileTransition = this.Revive,
+                    Delay           = 1.0f,
+                    Duration        = 1.0f
+                });
+                return;
             }
 
             if (this.Enemies.Any(VisibleInScreen))
@@ -129,18 +147,33 @@ namespace GameplayScene.Entity
             return screenPoint.x < Screen.width && screenPoint.y < Screen.height && screenPoint is { x: > 0, y: > 0 };
         }
 
+        public void Revive()
+        {
+            foreach (var enemy in this.Enemies)
+            {
+                this.AbilitySystem.ApplyEffect(new BaseEffect.EffectData
+                {
+                    EffectType = typeof(DamageEffect),
+                    Value      = enemy.Health
+                }, enemy);
+            }
+
+            this.IsPlayable = true;
+            this.SetIsAlive(true);
+            this.InternalResetHealth();
+        }
 
         #region Animator
 
         private static readonly int AnimationKeyIsAlive = Animator.StringToHash("IsAlive");
         private static readonly int AnimationKeyAttack  = Animator.StringToHash("Attack");
 
-        public void SetIsAlive(bool isAlive)
+        private void SetIsAlive(bool isAlive)
         {
             this.Animator.SetBool(AnimationKeyIsAlive, isAlive);
         }
 
-        public void SetAttack()
+        private void SetAttack()
         {
             this.Animator.SetTrigger(AnimationKeyAttack);
         }

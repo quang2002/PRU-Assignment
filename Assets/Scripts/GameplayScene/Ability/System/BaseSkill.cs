@@ -1,6 +1,8 @@
 namespace GameplayScene.Ability.System
 {
     using Models.Blueprint;
+    using Models.DataControllers;
+    using Models.LocalData;
     using Signals;
     using Zenject;
 
@@ -12,14 +14,19 @@ namespace GameplayScene.Ability.System
         public          IAbilitySystem             AbilitySystem   { get; set; }
         public          SkillBlueprint.SkillRecord SkillRecord     { get; private set; }
 
+        public SkillData SkillData => this.InventoryDataController.GetSKillData(this.SkillID);
+
         #region Inject
 
-        protected SignalBus SignalBus { get; }
+        protected SignalBus               SignalBus               { get; }
+        protected InventoryDataController InventoryDataController { get; }
 
-        protected BaseSkill(SkillBlueprint skillBlueprint,
-                            SignalBus      signalBus)
+        protected BaseSkill(SkillBlueprint          skillBlueprint,
+                            SignalBus               signalBus,
+                            InventoryDataController inventoryDataController)
         {
-            this.SignalBus = signalBus;
+            this.SignalBus               = signalBus;
+            this.InventoryDataController = inventoryDataController;
             // ReSharper disable once VirtualMemberCallInConstructor
             this.SkillRecord = skillBlueprint[this.SkillID];
         }

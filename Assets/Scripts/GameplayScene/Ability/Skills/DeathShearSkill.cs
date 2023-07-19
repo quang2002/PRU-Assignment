@@ -19,10 +19,11 @@ namespace GameplayScene.Ability.Skills
 
         public DeadShearSkill(SkillBlueprint          skillBlueprint,
                               SignalBus               signalBus,
+                              InventoryDataController inventoryDataController,
                               VFXService              vfxService,
                               Player                  player,
                               MainLocalDataController mainLocalDataController
-        ) : base(skillBlueprint, signalBus)
+        ) : base(skillBlueprint, signalBus, inventoryDataController)
         {
             this.VFXService              = vfxService;
             this.Player                  = player;
@@ -41,7 +42,7 @@ namespace GameplayScene.Ability.Skills
                 this.AbilitySystem.ApplyEffect(new BaseEffect.EffectData
                 {
                     EffectType = typeof(DamageEffect),
-                    Value      = this.MainLocalDataController.GetStatValue(StatType.Attack) * 10f
+                    Value      = this.MainLocalDataController.GetStatValue(StatType.Attack) * 10f * this.SkillData.Level
                 }, enemy);
             }
         }

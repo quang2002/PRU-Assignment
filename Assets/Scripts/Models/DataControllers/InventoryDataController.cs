@@ -83,6 +83,17 @@ namespace Models.DataControllers
             return this.InventoryLocalData.EquippedSkill.Contains(id);
         }
 
+        public SkillData GetSKillData(string id)
+        {
+            return this.InventoryLocalData.SkillData.TryGetValue(id, out var data)
+                ? data
+                : new SkillData
+                {
+                    ID    = id,
+                    Level = 0
+                };
+        }
+
         public SkillData GetSkillAtSlot(uint slot)
         {
             try

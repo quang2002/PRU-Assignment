@@ -10,13 +10,7 @@
         #region View
 
         [field: SerializeField]
-        public Button BtnTalent { get; private set; }
-
-        [field: SerializeField]
         public Button BtnSkill { get; private set; }
-
-        [field: SerializeField]
-        public Button BtnArtifact { get; private set; }
 
         [field: SerializeField]
         public Button BtnShop { get; private set; }
@@ -30,9 +24,7 @@
         {
             base.OnInit();
 
-            this.BtnTalent.onClick.AddListener(this.OnClickTalentPopup);
             this.BtnSkill.onClick.AddListener(this.OnClickSkillPopup);
-            this.BtnArtifact.onClick.AddListener(this.OnClickArtifactPopup);
             this.BtnShop.onClick.AddListener(this.OnClickShopPopup);
             this.BtnExit.onClick.AddListener(() => this.QuitApplication());
         }
@@ -49,19 +41,9 @@
             this.UIManager.OpenScreen<GachaScreen>();
         }
 
-        private void OnClickArtifactPopup()
-        {
-            // this.UIManager.OpenScreen<>();
-        }
-
         private void OnClickSkillPopup()
         {
             this.UIManager.OpenScreen<SkillSettingScreen>();
-        }
-
-        private void OnClickTalentPopup()
-        {
-            // this.UIManager.OpenScreen<>();
         }
 
         #endregion
