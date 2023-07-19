@@ -87,6 +87,7 @@ namespace GameplayScene.Entity
         private void Update()
         {
             this.Animator.SetInteger(AnimationKeyHealth, (int)this.Health);
+            this.Collider2D.size = this.SpriteRenderer.size;
             this.EnemyBehaviour?.UpdatePerFrame();
 
             if (!this.IsAlive() && this.HasBehaviour)
@@ -129,7 +130,6 @@ namespace GameplayScene.Entity
             this.Health         = enemyRecord.BaseHealth + enemyRecord.HealthInc * level;
             this.EnemyBehaviour = this.EnemyBehaviourProvider.CreateBehaviour(enemyID, this);
 
-            this.Collider2D.size = this.SpriteRenderer.size;
             this.Player.Enemies.Add(this);
         }
 
