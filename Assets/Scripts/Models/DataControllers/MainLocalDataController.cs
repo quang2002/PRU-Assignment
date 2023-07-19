@@ -113,5 +113,19 @@ namespace Models.DataControllers
                 _                       => throw new ArgumentOutOfRangeException(nameof(statType), statType, null)
             };
         }
+
+        public (float damage, bool critical) GetDamageWithCritical(float damage)
+        {
+            var criticalRate   = this.GetStatValue(StatType.CriticalRate);
+            var criticalDamage = this.GetStatValue(StatType.CriticalDamage);
+            var random         = UnityEngine.Random.Range(0f, 100f);
+
+            if (random <= criticalRate)
+            {
+                return (damage * criticalDamage, true);
+            }
+
+            return (damage, false);
+        }
     }
 }
