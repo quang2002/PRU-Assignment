@@ -6,5 +6,13 @@
         "health": 1000,
         "damage-inc": 100,
         "health-inc": 1000
+    },
+    "necromancer": {
+        "name": "Necromancer",
+        "animator": "Necromancer",
+        "damage": 100,
+        "health": 500,
+        "damage-inc": 100,
+        "health-inc": 500
     }
 }
