@@ -2,6 +2,7 @@ namespace GameplayScene.Entity
 {
     using System.Collections.Generic;
     using System.Linq;
+    using Common;
     using GameplayScene.Ability.System;
     using Models.Blueprint;
     using Models.DataControllers;
@@ -76,24 +77,26 @@ namespace GameplayScene.Entity
                 this.SetAttack();
             }
 
-            this.HealthSlider.value = this.Health / this.MainLocalDataController.MaxHealth;
+            this.HealthSlider.value = this.Health / this.MainLocalDataController.GetStatValue(StatType.Health);
         }
 
         private void InternalAttack()
         {
             _ = this.VFXService.SpawnVFX("vfx-attack", this.transform.position);
 
+            var damage = this.MainLocalDataController.GetStatValue(StatType.Attack);
+
             foreach (var enemy in this.Enemies.Where(VisibleInScreen))
             {
                 this.EffectFactory
-                    .Create(new SkillBlueprint.EffectRecord("damage", 1000, 0))
+                    .Create(new SkillBlueprint.EffectRecord("damage", damage, 0))
                     .ApplyEffect(enemy);
             }
         }
 
         private void InternalResetHealth()
         {
-            this.Health = this.MainLocalDataController.MaxHealth;
+            this.Health = this.MainLocalDataController.GetStatValue(StatType.Health);
         }
 
         private void OnTookDamage(TookDamageSignal signal)

@@ -4,6 +4,7 @@ namespace GameplayScene.Screens.Components
     using Common;
     using Models.Blueprint;
     using Models.DataControllers;
+    using Signals;
     using TMPro;
     using UnityEngine;
     using UnityEngine.UI;
@@ -35,10 +36,13 @@ namespace GameplayScene.Screens.Components
 
         [Inject]
         private void Inject(MainLocalDataController mainLocalDataController,
-                            UpgradeBlueprint        upgradeBlueprint)
+                            UpgradeBlueprint        upgradeBlueprint,
+                            SignalBus               signalBus)
         {
             this.MainLocalDataController = mainLocalDataController;
             this.UpgradeBlueprint        = upgradeBlueprint;
+
+            signalBus.Subscribe<CoinChangedSignal>(this.OnCoinChanged);
         }
 
         #endregion
@@ -51,6 +55,11 @@ namespace GameplayScene.Screens.Components
             this.RebindUpgrade();
         }
 
+        private void OnCoinChanged(CoinChangedSignal obj)
+        {
+            this.RebindUpgrade();
+        }
+
         private void OnClickUpgrade()
         {
             var coinNeeded = this.CoinPerLevel * this.CurrentStatLevel;
@@ -59,10 +68,9 @@ namespace GameplayScene.Screens.Components
 
             if (newCoins < 0) return;
 
-            this.MainLocalDataController.SetCoins(newCoins);
+            this.MainLocalDataController.Coins = newCoins;
 
             this.UpgradeSkill();
-            this.RebindUpgrade();
         }
 
         private void RebindUpgrade()
@@ -71,6 +79,7 @@ namespace GameplayScene.Screens.Components
 
             this.TextCoinNeeded.text     = coinNeeded.ToShortString();
             this.BtnUpgrade.interactable = coinNeeded <= this.MainLocalDataController.Coins;
+            this.TextCurrentValue.text   = this.MainLocalDataController.GetStatValue(this.StatType).ToString("F2");
         }
 
         private void UpgradeSkill()

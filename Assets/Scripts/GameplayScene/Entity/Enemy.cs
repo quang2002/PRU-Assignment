@@ -22,6 +22,7 @@ namespace GameplayScene.Entity
     {
         public List<BaseEffect>   Effects    { get; } = new();
         public float              Health     { get; set; }
+        public float              Damage     { get; set; }
         IObjectPool IPooledObject.ObjectPool { get; set; }
 
         #region Properties
@@ -55,6 +56,7 @@ namespace GameplayScene.Entity
         private EnemyBlueprint         EnemyBlueprint         { get; set; }
         private EnemyBehaviourProvider EnemyBehaviourProvider { get; set; }
         private Player                 Player                 { get; set; }
+        private SignalBus              SignalBus              { get; set; }
         private DamageTextService      DamageTextService      { get; set; }
 
         [Inject]
@@ -69,6 +71,7 @@ namespace GameplayScene.Entity
             this.EnemyBlueprint         = enemyBlueprint;
             this.EnemyBehaviourProvider = enemyBehaviourProvider;
             this.Player                 = player;
+            this.SignalBus              = signalBus;
             this.DamageTextService      = damageTextService;
 
             signalBus.Subscribe<TookDamageSignal>(this.OnTookDamageSignal);
@@ -92,7 +95,12 @@ namespace GameplayScene.Entity
 
             if (!this.IsAlive() && this.HasBehaviour)
             {
-                this.EnemyBehaviour?.OnDead();
+                this.SignalBus.Fire(new EnemyDeadSignal
+                {
+                    EnemyRecord = this.EnemyBehaviour!.EnemyRecord
+                });
+
+                this.EnemyBehaviour!.OnDead();
                 this.EnemyBehaviour = null;
                 var deathAnimationLength = this.Animator.GetNextAnimatorStateInfo(0).length;
                 Task.Delay((int)(deathAnimationLength * 1000)).ContinueWith(_ => this.Release());
@@ -128,6 +136,9 @@ namespace GameplayScene.Entity
             this.Animator.Rebind();
 
             this.Health         = enemyRecord.BaseHealth + enemyRecord.HealthInc * level;
+            this.Damage         = enemyRecord.BaseDamage + enemyRecord.DamageInc * level;
+            
+            Debug.Log(this.Damage);
             this.EnemyBehaviour = this.EnemyBehaviourProvider.CreateBehaviour(enemyID, this);
 
             this.Player.Enemies.Add(this);

@@ -29,7 +29,7 @@ namespace GameplayScene.EnemyBehaviours
 
         public void UpdatePerFrame()
         {
-            if ((this.Enemy.transform.position - this.Player.transform.position).sqrMagnitude < .5f)
+            if ((this.Enemy.transform.position - this.Player.transform.position).sqrMagnitude < 4f)
             {
                 this.Enemy.Attack();
                 this.Enemy.Rigidbody2D.velocity = Vector2.zero;
@@ -44,7 +44,7 @@ namespace GameplayScene.EnemyBehaviours
 
         public void OnAttack()
         {
-            this.EffectFactory.Create(new("damage", 100, 0)).ApplyEffect(this.Player);
+            this.EffectFactory.Create(new("damage", this.Enemy.Damage, 0)).ApplyEffect(this.Player);
         }
 
         public void OnDead()
