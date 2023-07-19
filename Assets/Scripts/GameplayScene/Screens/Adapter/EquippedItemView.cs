@@ -4,6 +4,7 @@
     using GDK.AssetsManager;
     using Models.Blueprint;
     using Models.DataControllers;
+    using Models.LocalData;
     using TMPro;
     using UnityEngine;
     using UnityEngine.UI;
@@ -14,7 +15,7 @@
         #region View
 
         [field: SerializeField]
-        public Button ButtonUnequip { get; private set; }
+        public Button ButtonUnEquip { get; private set; }
 
         [field: SerializeField]
         public Image SkillImage { get; private set; }
@@ -28,12 +29,12 @@
 
         private InventoryDataController InventoryDataController { get; set; }
         private SkillBlueprint          SkillBlueprint          { get; set; }
-        private IAssetsManager           AssetsManager           { get; set; }
+        private IAssetsManager          AssetsManager           { get; set; }
 
         [Inject]
         private void Inject(InventoryDataController inventoryDataController,
                             SkillBlueprint          skillBlueprint,
-                            IAssetsManager           assetsManager)
+                            IAssetsManager          assetsManager)
         {
             this.InventoryDataController = inventoryDataController;
             this.SkillBlueprint          = skillBlueprint;
@@ -43,17 +44,17 @@
         #endregion
 
         private       string skillId;
-        private const string LevelPrefix = "LEVEL";
+        private const string LevelPrefix = "";
 
-        public void BindData(string id)
+        public void BindData(SkillData skillData)
         {
-            this.skillId = id;
-            this.ButtonUnequip.onClick.AddListener(this.UnequipSkill);
+            this.skillId = skillData.ID;
+            this.ButtonUnEquip.onClick.AddListener(this.UnEquipSkill);
             this.SkillImage.sprite = this.AssetsManager.LoadSprite(this.SkillBlueprint[this.skillId].Icon);
-            this.SkillLevel.text   = $"{LevelPrefix}{this.InventoryDataController.InventoryLocalData.SkillData[this.skillId].Level}";
+            this.SkillLevel.text   = $"{LevelPrefix}{skillData.Level}";
         }
 
-        private void UnequipSkill()
+        private void UnEquipSkill()
         {
             this.InventoryDataController.RemoveSkill(this.skillId);
         }

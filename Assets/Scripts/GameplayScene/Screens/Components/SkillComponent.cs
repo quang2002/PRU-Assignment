@@ -3,6 +3,7 @@ namespace GameplayScene.Screens.Components
     using GameplayScene.Ability.System;
     using GDK.AssetsManager;
     using GDK.GDKUtils;
+    using GDK.UIManager;
     using Models.DataControllers;
     using Signals;
     using UnityEngine;
@@ -33,17 +34,20 @@ namespace GameplayScene.Screens.Components
         private SignalBus               SignalBus               { get; set; }
         private IAbilitySystem          AbilitySystem           { get; set; }
         private InventoryDataController InventoryDataController { get; set; }
+        private UIManager               UIManager               { get; set; }
 
         [Inject]
         private void Inject(IAssetsManager          assetsManager,
                             SignalBus               signalBus,
                             IAbilitySystem          abilitySystem,
-                            InventoryDataController inventoryDataController)
+                            InventoryDataController inventoryDataController,
+                            UIManager               uiManager)
         {
             this.AssetsManager           = assetsManager;
             this.SignalBus               = signalBus;
             this.AbilitySystem           = abilitySystem;
             this.InventoryDataController = inventoryDataController;
+            this.UIManager               = uiManager;
         }
 
         #endregion
@@ -107,7 +111,14 @@ namespace GameplayScene.Screens.Components
 
         private void OnClickSkillButton()
         {
-            this.Skill?.Cast();
+            if (this.Skill is null)
+            {
+                this.UIManager.OpenScreen<SkillSettingScreen>();
+            }
+            else
+            {
+                this.Skill.Cast();
+            }
         }
     }
 }

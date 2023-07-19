@@ -10,16 +10,16 @@
     public class SkillSettingScreen : BasePopup
     {
         #region View
-        
+
         [field: SerializeField]
         public Transform EquippedSkillListTransform { get; private set; }
-        
+
         [field: SerializeField]
         public Transform SkillListTransform { get; private set; }
-        
+
         [field: SerializeField]
         public GameObject SkillTemplate { get; private set; }
-        
+
         [field: SerializeField]
         public GameObject EquippedSkillTemplate { get; private set; }
 
@@ -28,16 +28,13 @@
         #region Inject
 
         private InventoryDataController InventoryDataController { get; set; }
-        private DiContainer             DiContainer             { get; set; }
         private SignalBus               SignalBus               { get; set; }
 
         [Inject]
         private void Inject(InventoryDataController inventoryDataController,
-                            DiContainer diContainer,
-                            SignalBus signalBus)
+                            SignalBus               signalBus)
         {
             this.InventoryDataController = inventoryDataController;
-            this.DiContainer             = diContainer;
             this.SignalBus               = signalBus;
         }
 
@@ -46,18 +43,17 @@
         protected override void OnInit()
         {
             base.OnInit();
-            
+
             this.SignalBus.Subscribe<EquippedSkillSignal>(this.ReloadSkill);
         }
 
         protected override void OnShow()
         {
             base.OnShow();
-            
             this.ReloadSkill();
         }
 
-        private void ClearList(Transform listTransform, GameObject skillTemplate)
+        private static void ClearList(Transform listTransform, GameObject skillTemplate)
         {
             foreach (Transform child in listTransform)
             {
@@ -68,24 +64,22 @@
 
         private void ReloadSkill()
         {
-            this.ClearList(this.EquippedSkillListTransform, this.EquippedSkillTemplate);
+            ClearList(this.EquippedSkillListTransform, this.EquippedSkillTemplate);
 
-            this.ClearList(this.SkillListTransform, this.SkillTemplate);
-            
-            foreach (var equippedSkillData in this.InventoryDataController.InventoryLocalData.EquippedSkill)
+            ClearList(this.SkillListTransform, this.SkillTemplate);
+
+            foreach (var (_, skillData) in this.InventoryDataController.GetAllEquippedSkillData())
             {
-                if(equippedSkillData == null) continue;
-                var skill = Instantiate(this.EquippedSkillTemplate  , this.EquippedSkillListTransform);
-                this.DiContainer.InjectGameObject(skill);
-                skill.GetComponent<EquippedItemView>().BindData(equippedSkillData);
+                if (skillData == null) continue;
+                var skill = this.Container.InstantiatePrefab(this.EquippedSkillTemplate, this.EquippedSkillListTransform);
+                skill.GetComponent<EquippedItemView>().BindData(skillData);
                 skill.SetActive(true);
             }
-            
-            foreach (var skillData in this.InventoryDataController.InventoryLocalData.SkillData)
+
+            foreach (var (_, skillData) in this.InventoryDataController.GetAllSkillData())
             {
-                var skill = Instantiate(this.SkillTemplate, this.SkillListTransform);
-                this.DiContainer.InjectGameObject(skill);
-                skill.GetComponent<SkillItemView>().BindData(skillData.Value);
+                var skill = this.Container.InstantiatePrefab(this.SkillTemplate, this.SkillListTransform);
+                skill.GetComponent<SkillItemView>().BindData(skillData);
                 skill.SetActive(true);
             }
         }

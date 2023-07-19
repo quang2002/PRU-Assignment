@@ -33,6 +33,10 @@ MonoBehaviour:
     m_Address: GachaScreen
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: 4e8e3ba66b11777448a016862bcb34e4
+    m_Address: SkillSettingScreen
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: a0a4f9e4ac3d0a144827d32c0bc1beeb, type: 2}
   m_SchemaSet:

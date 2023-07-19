@@ -13,9 +13,9 @@ namespace Models.DataControllers
     {
         #region Inject
 
-        public InventoryLocalData InventoryLocalData { get; }
-        public SkillBlueprint     SkillBlueprint     { get; }
-        public SignalBus          SignalBus          { get; }
+        private InventoryLocalData InventoryLocalData { get; }
+        private SkillBlueprint     SkillBlueprint     { get; }
+        private SignalBus          SignalBus          { get; }
 
         public InventoryDataController(InventoryLocalData inventoryLocalData,
                                        SkillBlueprint     skillBlueprint,
@@ -44,9 +44,7 @@ namespace Models.DataControllers
             {
                 var id = this.InventoryLocalData.EquippedSkill[i];
 
-                if (string.IsNullOrEmpty(id)) continue;
-
-                this.InventoryLocalData.SkillData.TryGetValue(id, out var data);
+                this.InventoryLocalData.SkillData.TryGetValue(id ?? string.Empty, out var data);
                 yield return ((uint)i, data);
             }
         }
@@ -80,6 +78,11 @@ namespace Models.DataControllers
             });
         }
 
+        public bool IsSkillEquipped(string id)
+        {
+            return this.InventoryLocalData.EquippedSkill.Contains(id);
+        }
+
         public SkillData GetSkillAtSlot(uint slot)
         {
             try
@@ -93,16 +96,43 @@ namespace Models.DataControllers
             }
         }
 
-        public void RemoveSkill(string skillId)
+        public void UseSkill(string id)
         {
-            for (var i = 0; i < this.InventoryLocalData.EquippedSkill.Length; i++)
+            if (this.IsSkillEquipped(id)) return;
+
+            var equippedSkill = this.InventoryLocalData.EquippedSkill;
+
+            for (uint i = 0; i < equippedSkill.Length; i++)
             {
-                if (!this.InventoryLocalData.EquippedSkill[i].Equals(skillId)) continue;
-                this.InventoryLocalData.EquippedSkill[i] = null;
+                if (equippedSkill[i] != null) continue;
+
+                equippedSkill[i] = id;
+
+                this.SignalBus.Fire(new EquippedSkillSignal
+                {
+                    Slot    = i,
+                    SkillID = id
+                });
                 break;
             }
+        }
 
-            this.SignalBus.Fire<EquippedSkillSignal>();
+        public void RemoveSkill(string id)
+        {
+            var equippedSkill = this.InventoryLocalData.EquippedSkill;
+
+            for (uint i = 0; i < equippedSkill.Length; i++)
+            {
+                if (equippedSkill[i] != id) continue;
+                equippedSkill[i] = null;
+
+                this.SignalBus.Fire(new EquippedSkillSignal
+                {
+                    Slot    = i,
+                    SkillID = null
+                });
+                break;
+            }
         }
     }
 }
