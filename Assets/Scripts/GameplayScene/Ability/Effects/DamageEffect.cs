@@ -1,13 +1,14 @@
 namespace GameplayScene.Ability.Effects
 {
     using GameplayScene.Ability.System;
-    using Models.Blueprint;
     using Signals;
     using Zenject;
 
     public class DamageEffect : BaseEffect
     {
         public SignalBus SignalBus { get; }
+
+        public float DamageInterval { get; private set; }
 
         public DamageEffect(EffectData effectData, SignalBus signalBus) : base(effectData)
         {
@@ -16,13 +17,19 @@ namespace GameplayScene.Ability.Effects
 
         public override void UpdatePerFrame(float deltaTime)
         {
-            this.Entity.Health -= this.Data.Value;
+            this.DamageInterval -= deltaTime;
 
-            this.SignalBus.Fire(new TookDamageSignal
+            if (this.DamageInterval <= 0)
             {
-                Entity = this.Entity,
-                Damage = this.Data.Value
-            });
+                this.Entity.Health -= this.Data.Value;
+                this.SignalBus.Fire(new TookDamageSignal
+                {
+                    Entity = this.Entity,
+                    Damage = this.Data.Value
+                });
+
+                this.DamageInterval = 1f;
+            }
         }
     }
 }

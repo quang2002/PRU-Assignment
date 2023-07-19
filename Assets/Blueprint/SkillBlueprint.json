@@ -1,7 +1,7 @@
 {
-    "fireball": {
-        "name": "Fireball",
-        "description": "A meteor that falls from the sky and hits the target.",
+    "holy-blade": {
+        "name": "Holy Blade",
+        "description": "Vạn kiếm quy tông",
         "icon": "skill-7",
         "cooldown": 10.0,
         "extras": {
@@ -12,6 +12,14 @@
         "description": "A powerful attack that deals damage to all enemies on the moon path.",
         "icon": "skill-2",
         "cooldown": 15.0,
+        "extras": {
+        }
+    },
+    "dark-armor": {
+        "name": "Dark Armor",
+        "description": "A shield that immune to all damage for 3 seconds.",
+        "icon": "skill-5",
+        "cooldown": 20.0,
         "extras": {
         }
     }

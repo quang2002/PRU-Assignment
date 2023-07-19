@@ -1,7 +1,6 @@
 namespace GameplayScene.Ability.System
 {
     using global::System.Collections.Generic;
-    using Models.Blueprint;
 
     public interface IAbilitySystem
     {

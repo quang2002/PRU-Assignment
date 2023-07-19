@@ -1,6 +1,5 @@
 namespace GameplayScene.Screens.Components
 {
-    using System;
     using Models.DataControllers;
     using TMPro;
     using UnityEngine;

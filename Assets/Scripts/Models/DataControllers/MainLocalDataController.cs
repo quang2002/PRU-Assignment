@@ -7,6 +7,7 @@ namespace Models.DataControllers
     using Models.LocalData;
     using Signals;
     using Zenject;
+    using Random = UnityEngine.Random;
 
     public class MainLocalDataController : ILocalDataController
     {
@@ -118,7 +119,7 @@ namespace Models.DataControllers
         {
             var criticalRate   = this.GetStatValue(StatType.CriticalRate);
             var criticalDamage = this.GetStatValue(StatType.CriticalDamage);
-            var random         = UnityEngine.Random.Range(0f, 100f);
+            var random         = Random.Range(0f, 100f);
 
             if (random <= criticalRate)
             {

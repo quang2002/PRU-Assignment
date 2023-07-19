@@ -1,6 +1,5 @@
 ﻿namespace GameplayScene.Screens.Adapter
 {
-    using System.Linq;
     using GDK.AssetsManager;
     using Models.Blueprint;
     using Models.DataControllers;

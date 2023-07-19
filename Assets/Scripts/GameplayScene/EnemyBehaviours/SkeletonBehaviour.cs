@@ -3,7 +3,6 @@ namespace GameplayScene.EnemyBehaviours
     using GameplayScene.Ability.Effects;
     using GameplayScene.Ability.System;
     using GameplayScene.Entity;
-    using GDK.ObjectPool;
     using Models.Blueprint;
     using UnityEngine;
 

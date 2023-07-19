@@ -2,7 +2,6 @@ namespace GameplayScene.Entity
 {
     using System;
     using System.Collections.Generic;
-    using System.Linq;
     using System.Threading.Tasks;
     using GameplayScene.Ability.System;
     using GDK.AssetsManager;

@@ -9,36 +9,35 @@ namespace GameplayScene.Ability.Skills
     using UnityEngine;
     using Zenject;
 
-    public class DeadShearSkill : BaseSkill
+    public class HolyBladeSkill : BaseSkill
     {
-        public VFXService VFXService { get; }
         public Player     Player     { get; }
+        public VFXService VFXService { get; }
 
-        public DeadShearSkill(SkillBlueprint          skillBlueprint,
+        public HolyBladeSkill(SkillBlueprint          skillBlueprint,
                               SignalBus               signalBus,
                               InventoryDataController inventoryDataController,
-                              VFXService              vfxService,
-                              Player                  player
+                              Player                  player,
+                              VFXService              vfxService
         ) : base(skillBlueprint, signalBus, inventoryDataController)
         {
-            this.VFXService = vfxService;
             this.Player     = player;
+            this.VFXService = vfxService;
         }
 
-        public override string SkillID => "death-shear";
+        public override string SkillID => "holy-blade";
 
         protected override void Perform()
         {
             var position = this.Player.transform.position;
-            _ = this.VFXService.SpawnVFX("vfx-death-shear", position, Quaternion.Euler(0, 90, 0));
+            _ = this.VFXService.SpawnVFX("vfx-holy-blade", position + new Vector3(  5f, -0.7f), Quaternion.Euler(0, 90, 0), Vector3.one * 0.7f);
 
             foreach (var enemy in this.Player.Enemies)
             {
                 this.AbilitySystem.ApplyEffect(new BaseEffect.EffectData
                 {
                     EffectType = typeof(DamageEffect),
-                    Value      = this.SkillData.Level,
-                    Duration   = 10f
+                    Value      = 5f * this.SkillData.Level
                 }, enemy);
             }
         }

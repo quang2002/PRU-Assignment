@@ -1,15 +1,12 @@
 namespace GameplayScene.Entity
 {
-    using System;
     using System.Collections.Generic;
     using System.Linq;
-    using System.Threading.Tasks;
     using Common;
     using GameplayScene.Ability.Effects;
     using GameplayScene.Ability.System;
     using GameplayScene.Screens;
     using GDK.UIManager;
-    using Models.Blueprint;
     using Models.DataControllers;
     using Services;
     using Signals;
@@ -29,6 +26,13 @@ namespace GameplayScene.Entity
 
         public HashSet<Enemy> Enemies    { get; } = new();
         public bool           IsPlayable { get; private set; }
+
+
+        #region Abilities
+
+        public bool Invisible { get; set; }
+
+        #endregion
 
         #region Serialize Fields
 
@@ -123,10 +127,13 @@ namespace GameplayScene.Entity
 
         private void OnTookDamage(TookDamageSignal signal)
         {
-            if (signal.Entity is not Player || !this.IsAlive())
+            if (signal.Entity is not Player)
             {
                 return;
             }
+
+            if (this.Invisible)
+                signal.Entity.Health += signal.Damage;
         }
 
         private void OnEnemyDead(EnemyDeadSignal signal)

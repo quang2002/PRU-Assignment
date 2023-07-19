@@ -6,7 +6,6 @@
     using Models.DataControllers;
     using Signals;
     using UnityEngine;
-    using UnityEngine.UI;
     using Zenject;
 
     public class SkillSettingScreen : BasePopup

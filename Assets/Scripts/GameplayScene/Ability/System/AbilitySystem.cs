@@ -54,7 +54,7 @@ namespace GameplayScene.Ability.System
             {
                 effect.UpdatePerFrame(Time.deltaTime);
                 effect.Duration -= Time.deltaTime;
-                if (effect.Duration <= 0) this.RemoveEffect(effect);
+                if (effect.Duration <= 0 || effect.Entity is { Health: <= 0 }) this.RemoveEffect(effect);
             }
 
             foreach (var (_, skill) in this.Skills)

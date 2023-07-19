@@ -2,7 +2,6 @@ namespace GameplayScene.Screens.Components
 {
     using GameplayScene.Ability.System;
     using GDK.AssetsManager;
-    using GDK.GDKUtils;
     using GDK.UIManager;
     using Models.DataControllers;
     using Signals;
