@@ -56,7 +56,7 @@
 
         private void OnClickSkillPopup()
         {
-            // this.UIManager.OpenScreen<>();
+            this.UIManager.OpenScreen<SkillSettingScreen>();
         }
 
         private void OnClickTalentPopup()

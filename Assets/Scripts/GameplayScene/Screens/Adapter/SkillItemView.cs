@@ -5,6 +5,7 @@
     using Models.Blueprint;
     using Models.DataControllers;
     using Models.LocalData;
+    using Signals;
     using TMPro;
     using UnityEngine;
     using UnityEngine.UI;
@@ -22,6 +23,12 @@
         
         [field: SerializeField]
         public TextMeshProUGUI SkillLevel { get; private set; }
+        
+        [field: SerializeField]
+        public Image CoverImage { get; private set; }
+
+        [field: SerializeField]
+        public TextMeshProUGUI EquippedText { get; private set; }
 
         #endregion
 
@@ -29,16 +36,19 @@
 
         private InventoryDataController InventoryDataController { get; set; }
         private SkillBlueprint          SkillBlueprint          { get; set; }
-        private AssetsManager           AssetsManager           { get; set; }
+        private IAssetsManager           AssetsManager           { get; set; }
+        private SignalBus               SignalBus               { get; set; }
 
         [Inject]
         private void Inject(InventoryDataController inventoryDataController,
                             SkillBlueprint skillBlueprint,
-                            AssetsManager assetsManager)
+                            IAssetsManager assetsManager,
+                            SignalBus signalBus)
         {
             this.InventoryDataController = inventoryDataController;
             this.SkillBlueprint          = skillBlueprint;
             this.AssetsManager           = assetsManager;
+            this.SignalBus               = signalBus;
         }
 
         #endregion
@@ -51,6 +61,8 @@
             this.ButtonEquip.onClick.AddListener(this.EquipSkill);
             this.SkillImage.sprite = this.AssetsManager.LoadSprite(this.SkillBlueprint[this.skillData.ID].Icon);
             this.SkillLevel.text        = $"{LevelPrefix}{this.skillData.Level}";
+            this.CoverImage.gameObject.SetActive(this.InventoryDataController.InventoryLocalData.EquippedSkill.Contains(this.skillData.ID));
+            this.EquippedText.gameObject.SetActive(this.InventoryDataController.InventoryLocalData.EquippedSkill.Contains(this.skillData.ID));
         }
 
         private void EquipSkill()
@@ -62,8 +74,8 @@
                 slot = i;
                 break;
             }
-            this.InventoryDataController.UseSkillAtSlot(this.skillData.ID,
-                                                        slot);
+            
+            this.InventoryDataController.UseSkillAtSlot(this.skillData.ID, slot);
         }
     }
 }
