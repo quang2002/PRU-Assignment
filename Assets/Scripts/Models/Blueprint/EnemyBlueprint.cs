@@ -22,6 +22,12 @@ namespace Models.Blueprint
             [JsonProperty("animator")]
             public string AnimatorController { get; private set; }
 
+            [JsonProperty("exp")]
+            public uint Exp { get; private set; }
+
+            [JsonProperty("coins")]
+            public uint Coins { get; private set; }
+
             [JsonProperty("damage")]
             public float BaseDamage { get; private set; }
 

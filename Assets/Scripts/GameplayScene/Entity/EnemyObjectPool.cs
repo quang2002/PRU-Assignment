@@ -3,6 +3,7 @@ namespace GameplayScene.Entity
     using Common;
     using GDK.ObjectPool;
     using Models.Blueprint;
+    using Models.DataControllers;
     using UnityEngine;
     using Utilities;
     using Zenject;
@@ -14,11 +15,16 @@ namespace GameplayScene.Entity
         private EnemyBlueprint EnemyBlueprint { get; set; }
         private DiContainer    Container      { get; set; }
 
+        private MainLocalDataController MainLocalDataController { get; set; }
+
         [Inject]
-        public void Inject(EnemyBlueprint enemyBlueprint, DiContainer container)
+        public void Inject(EnemyBlueprint          enemyBlueprint,
+                           DiContainer             container,
+                           MainLocalDataController mainLocalDataController)
         {
-            this.EnemyBlueprint = enemyBlueprint;
-            this.Container      = container;
+            this.EnemyBlueprint          = enemyBlueprint;
+            this.Container               = container;
+            this.MainLocalDataController = mainLocalDataController;
         }
 
         #endregion
@@ -54,7 +60,7 @@ namespace GameplayScene.Entity
             this.Instantiate(new Model
             {
                 ID    = id,
-                Level = 1
+                Level = this.MainLocalDataController.Level
             });
         }
 

@@ -44,7 +44,7 @@ namespace GameplayScene.EnemyBehaviours
 
         public void OnAttack()
         {
-            this.EffectFactory.Create(new("damage", 100, 0)).ApplyEffect(this.Player);
+            this.EffectFactory.Create(new("damage", this.Enemy.Damage, 0)).ApplyEffect(this.Player);
         }
 
         public void OnDead()

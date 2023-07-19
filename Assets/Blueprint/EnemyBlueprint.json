@@ -2,17 +2,21 @@
     "death-bringer": {
         "name": "Death Bringer",
         "animator": "DeathBringer",
-        "damage": 100,
-        "health": 1000,
-        "damage-inc": 100,
-        "health-inc": 1000
+        "exp": 1,
+        "coins": 1,
+        "damage": 2,
+        "health": 5,
+        "damage-inc": 1,
+        "health-inc": 5
     },
     "necromancer": {
         "name": "Necromancer",
         "animator": "Necromancer",
-        "damage": 100,
-        "health": 500,
-        "damage-inc": 100,
-        "health-inc": 500
+        "exp": 2,
+        "coins": 2,
+        "damage": 1,
+        "health": 2,
+        "damage-inc": 1,
+        "health-inc": 5
     }
 }

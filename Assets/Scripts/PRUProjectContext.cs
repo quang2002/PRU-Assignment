@@ -13,6 +13,8 @@ public class PRUProjectContext : GDKProjectContext
         this.Container.DeclareSignal<CastedSkillSignal>();
         this.Container.DeclareSignal<UpgradedStatSignal>();
         this.Container.DeclareSignal<TookDamageSignal>();
+        this.Container.DeclareSignal<EnemyDeadSignal>();
+        this.Container.DeclareSignal<CoinChangedSignal>();
 
         this.Container.BindInterfacesTo<SaveLocalDataService>().AsCached().NonLazy();
     }
