@@ -16,7 +16,7 @@ namespace Models.Blueprint
 
         public UpgradeRecord Attack         => this[StatType.Attack];
         public UpgradeRecord Health         => this[StatType.Health];
-        public UpgradeRecord AttackSpeed    => this[StatType.AttackSpeed];
+        public UpgradeRecord HealthSteal    => this[StatType.HealthSteal];
         public UpgradeRecord CriticalRate   => this[StatType.CriticalRate];
         public UpgradeRecord CriticalDamage => this[StatType.CriticalDamage];
 

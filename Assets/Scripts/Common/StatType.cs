@@ -4,7 +4,7 @@ namespace Common
     {
         Attack,
         Health,
-        AttackSpeed,
+        HealthSteal,
         CriticalRate,
         CriticalDamage
     }

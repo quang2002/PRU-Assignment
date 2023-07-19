@@ -9,10 +9,10 @@
         "value": 1,
         "base": 20
     },
-    "AttackSpeed": {
+    "HealthSteal": {
         "coin": 5,
-        "value": 0.2,
-        "base": 0
+        "value": 1,
+        "base": 2
     },
     "CriticalRate": {
         "coin": 5,

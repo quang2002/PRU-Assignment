@@ -6,8 +6,8 @@
         "coins": 1,
         "damage": 2,
         "health": 5,
-        "damage-inc": 1,
-        "health-inc": 5
+        "damage-inc": 5,
+        "health-inc": 10
     },
     "necromancer": {
         "name": "Necromancer",
@@ -16,7 +16,7 @@
         "coins": 2,
         "damage": 1,
         "health": 2,
-        "damage-inc": 1,
+        "damage-inc": 10,
         "health-inc": 5
     }
 }
