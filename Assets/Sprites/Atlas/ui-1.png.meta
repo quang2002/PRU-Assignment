@@ -620,7 +620,7 @@ TextureImporter:
         width: 99
         height: 83
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 44, y: 40, z: 44, w: 40}
       outline: []
       physicsShape: []
@@ -641,7 +641,7 @@ TextureImporter:
         width: 87
         height: 83
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 38, y: 38, z: 38, w: 38}
       outline: []
       physicsShape: []
@@ -649,6 +649,69 @@ TextureImporter:
       bones: []
       spriteID: ac041e2b8ed2869468a7cd561211380f
       internalID: -277666315
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ui-1_0
+      rect:
+        serializedVersion: 2
+        x: 405
+        y: 1538
+        width: 168
+        height: 80
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 41, y: 23, z: 41, w: 10}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 893347d663658324bb650c85d291eece
+      internalID: 1281671556
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ui-1_1
+      rect:
+        serializedVersion: 2
+        x: 131
+        y: 1550
+        width: 142
+        height: 122
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b3fe6d420b1f2a34ea1b66b3803915ee
+      internalID: 651603521
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ui-1_2
+      rect:
+        serializedVersion: 2
+        x: 1464
+        y: 1906
+        width: 67
+        height: 67
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: edd15e452bd806f4dbb449eaacb013c8
+      internalID: 361288271
       vertices: []
       indices: 
       edges: []
@@ -689,6 +752,9 @@ TextureImporter:
       1_skill_icon: 606478091
       1_talent_icon: -1554604964
       1_transparent_frame: 251291415
+      ui-1_0: 1281671556
+      ui-1_1: 651603521
+      ui-1_2: 361288271
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
