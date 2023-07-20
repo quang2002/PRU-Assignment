@@ -10,7 +10,6 @@ namespace GameplayScene.Entity
     using Models.DataControllers;
     using Services;
     using Signals;
-    using UnityEditor.Animations;
     using UnityEngine;
     using Zenject;
 
@@ -122,7 +121,7 @@ namespace GameplayScene.Entity
 
         public void TransformTo(EnemyBlueprint.EnemyRecord enemyRecord, uint level)
         {
-            var animatorController = this.AssetsManager.Load<AnimatorController>(enemyRecord.AnimatorController);
+            var animatorController = this.AssetsManager.Load<RuntimeAnimatorController>(enemyRecord.AnimatorController);
             var enemyID            = string.Empty;
 
             foreach (var (key, value) in this.EnemyBlueprint)

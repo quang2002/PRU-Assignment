@@ -1,9 +1,9 @@
-﻿namespace GDK.GDKUtils
+﻿namespace GDK.GDKUtils.Editor
 {
+    using System;
     using System.Collections.Generic;
     using System.IO;
     using System.Reflection;
-    using ModestTree;
     using UnityEditor;
     using UnityEditor.SceneManagement;
     using UnityEngine;
@@ -81,7 +81,7 @@
             using (new EditorGUI.DisabledScope(Application.isPlaying))
             {
                 var sceneName  = SceneManager.GetActiveScene().name;
-                var sceneIndex = sceneNames.IndexOf(sceneName);
+                var sceneIndex = Array.IndexOf(sceneNames, sceneName);
 
                 var newSceneIndex = EditorGUILayout.Popup(sceneIndex, sceneNames, GUILayout.Width(200.0f));
 
